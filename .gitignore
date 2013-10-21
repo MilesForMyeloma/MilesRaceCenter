@@ -5,6 +5,6 @@ composer.phar
 composer.lock
 /app/config/sendGridConfig.php
 /app/config/defaultMailConfig.php
-/app/config/local/database.php
-/app/config/testing/database.php
+/app/config/local/*
+/app/config/testing/*
 .DS_Store
