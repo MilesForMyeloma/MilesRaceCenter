@@ -2,7 +2,8 @@
 	"require": {
 		"laravel/framework": "4.0.*@dev",
 		"cartalyst/sentry": "2.0.*",
-		"way/generators": "dev-master"
+		"way/generators": "dev-master",
+		"mockery/mockery": "dev-master@dev"
 	},
 	"autoload": {
 		"classmap": [

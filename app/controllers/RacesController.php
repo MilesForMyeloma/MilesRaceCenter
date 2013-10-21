@@ -2,6 +2,14 @@
 
 class RacesController extends BaseController {
 
+	protected $race;
+	/**
+	*
+	*/
+	public function __construct(Race $race) {
+		$this->race = $race;
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -9,10 +17,8 @@ class RacesController extends BaseController {
 	 */
 	public function index()
 	{
-		$data = array();
-
-		$data['allRaces'] = Race::all();
-        return View::make('races.index',$data);
+		$races=$this->race->all();
+        return View::make('races.index')->with('races',$races);
 	}
 
 	/**
