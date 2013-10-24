@@ -18,6 +18,7 @@ class RacesTableSeeder extends Seeder {
 			"website"=>"http://www.milesformm.com",
 			"created_at"=>$now,
 			"updated_at"=>$now,
+			"timezone"=>"America/Chicago",
 		);
 
 		// Uncomment the below to run the seeder
