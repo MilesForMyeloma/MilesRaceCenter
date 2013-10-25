@@ -2,12 +2,14 @@
 
 class Race extends Eloquent {
 
+	protected $appends = array('startLocal','endLocal');
+
 	/**
 	 * Get an array for the race start in local time.
 	 *
 	 * @return array
 	 */
-	public function getStartLocal()
+	public function getStartLocalAttribute()
 	{
 		return utcToLocal($this->start, $this->timezone);
 	}
@@ -17,7 +19,7 @@ class Race extends Eloquent {
 	 *
 	 * @return array
 	 */
-	public function getEndLocal()
+	public function getEndLocalAttribute()
 	{
 		return utcToLocal($this->end, $this->timezone);
 	}

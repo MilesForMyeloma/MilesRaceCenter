@@ -22,11 +22,11 @@ Race
 		@endif
 
 		@if ($race->start && $race->timezone)
-		<p><strong>Start:</strong> {{ $race->getStartLocal()['fullstring'] }}</p>
+		<p><strong>Start:</strong> {{ $race->startLocal['fullstring'] }}</p>
 		@endif
 
 		@if ($race->end && $race->timezone)
-		<p><strong>End:</strong> {{ $race->getEndLocal()['fullstring'] }}</p>
+		<p><strong>End:</strong> {{ $race->endLocal['fullstring'] }}</p>
 		@endif	
 
 		@if ($race->timezone)
