@@ -21,12 +21,16 @@ Race
 	    <p><strong>Description:</strong> {{ $race->description }} </p>
 		@endif
 
-		@if ($race->start)
-		<p><strong>Start:</strong> {{ $race->start }} GMT</p>
+		@if ($race->start && $race->timezone)
+		<p><strong>Start:</strong> {{ $race->getStartLocal()['fullstring'] }}</p>
 		@endif
 
-		@if ($race->end)
-		<p><strong>End:</strong> {{ $race->end }} GMT</p>
+		@if ($race->end && $race->timezone)
+		<p><strong>End:</strong> {{ $race->getEndLocal()['fullstring'] }}</p>
+		@endif	
+
+		@if ($race->timezone)
+		<p><strong>Timezone:</strong> {{ $race->timezone }}</p>
 		@endif		
 
 	    @if ($race->website)

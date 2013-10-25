@@ -55,16 +55,11 @@ class RacesController extends BaseController {
 	{
 		$race = $this->race->where('slug',$slug)->first();
 
+		$race->startLocal = utcToLocal($race->start, $race->timezone);
+		$race->endLocal = utcToLocal($race->end, $race->timezone);
 
-		
+		// localToUtc('2014-10-29 09:00am','America/Chicago')
 
-		dd(
-			array(
-				utcToLocal($race->start, $race->timezone),
-				utcToLocal($race->end, $race->timezone),
-				localToUtc('2014-10-29 09:00am','America/Chicago')
-			)
-		);
         return View::make('races.show')->with('race',$race);
 	}
 
