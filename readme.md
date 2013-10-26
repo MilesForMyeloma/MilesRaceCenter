@@ -5,6 +5,8 @@ It is currently under development and the core functionality does not exist yet.
 
 Project is a fork of [L4withSentry](https://github.com/rydurham/L4withSentry).
 
+![alt text](https://travis-ci.org/jcummins/MilesRaceCenter.png?branch=master "Build Status")
+
 ### Instructions
 
 After you have cloned this repo to your development environment, [install & run composer](http://niallobrien.me/2013/03/installing-and-updating-laravel-4/): 
