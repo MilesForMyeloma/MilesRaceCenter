@@ -3,7 +3,7 @@
 class TestCase extends Illuminate\Foundation\Testing\TestCase {
 
 
-	 protected $useDatabase = true;
+	protected $useDatabase = true;
 
 	/**
 	* Overload the call method to allow for lazy post, get, put etc
@@ -11,7 +11,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 	*/
 	public function __call($method, $args)
 	{
-		if (in_array($method, ['get', 'post', 'put', 'patch', 'delete']))
+		if (in_array($method, array('get', 'post', 'put', 'patch', 'delete')))
 		{
    			return $this->call($method, $args[0]);
     	}
@@ -33,6 +33,10 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 		return require __DIR__.'/../../bootstrap/start.php';
 	}
 
+	/**
+	* Set up function for all tests
+	*
+	*/
 	public function setUp()
     {
         parent::setUp();
@@ -42,11 +46,19 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
         }
     }
 
+	/**
+	* Tear down function for all tests
+	*
+	*/
     public function teardown()
     {
         Mockery::close();
     }
 
+    /**
+	* Set up the database for tests
+	*
+	*/
     public function setUpDb()
     {
     	Artisan::call('migrate', array('--package'=>'cartalyst/sentry'));
@@ -54,6 +66,10 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
         Artisan::call('db:seed');
     }
 
+    /**
+	* Tear down the database for tests
+	*
+	*/
     public function teardownDb()
     {
         Artisan::call('migrate:reset');
