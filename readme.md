@@ -5,7 +5,7 @@ It is currently under development and the core functionality does not exist yet.
 
 Project is a fork of [L4withSentry](https://github.com/rydurham/L4withSentry).
 
-![alt text](https://travis-ci.org/jcummins/MilesRaceCenter.png?branch=master "Build Status")
+[![Build Status](https://travis-ci.org/jcummins/MilesRaceCenter.png?branch=master)](https://travis-ci.org/jcummins/MilesRaceCenter)
 
 ### Instructions
 
