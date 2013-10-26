@@ -2,8 +2,11 @@
 
 class TestCase extends Illuminate\Foundation\Testing\TestCase {
 
+
+	 protected $useDatabase = true;
+
 	/**
-	* Overload the call method to allow for post, get, put etc
+	* Overload the call method to allow for lazy post, get, put etc
 	*
 	*/
 	public function __call($method, $args)
@@ -29,5 +32,31 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 
 		return require __DIR__.'/../../bootstrap/start.php';
 	}
+
+	public function setUp()
+    {
+        parent::setUp();
+        if($this->useDatabase)
+        {
+            $this->setUpDb();
+        }
+    }
+
+    public function teardown()
+    {
+        Mockery::close();
+    }
+
+    public function setUpDb()
+    {
+    	Artisan::call('migrate', array('--package'=>'cartalyst/sentry'));
+        Artisan::call('migrate');
+        Artisan::call('db:seed');
+    }
+
+    public function teardownDb()
+    {
+        Artisan::call('migrate:reset');
+    }
 
 }

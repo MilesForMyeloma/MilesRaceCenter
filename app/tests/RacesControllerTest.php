@@ -10,8 +10,7 @@ class RacesControllerTest extends TestCase {
 
   	public function setUp() {
   		parent::setUp();
-    	/* 
-    	 */
+
   	}
 
 	public function tearDown()
@@ -57,6 +56,7 @@ class RacesControllerTest extends TestCase {
 							"website"=>"http://www.milesformm.com",
 							"created_at"=>$now,
 							"updated_at"=>$now,
+							"timezone"=>"America/Chicago"
 						)
 					)
            		)

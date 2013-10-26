@@ -13,7 +13,7 @@ class AddTimezoneStringToRacesTable extends Migration {
 	public function up()
 	{
 		Schema::table('races', function(Blueprint $table) {
-			$table->string('timezone');
+			$table->string('timezone')->nullable();
 		});
 	}
 

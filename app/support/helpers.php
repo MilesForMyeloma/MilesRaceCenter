@@ -24,6 +24,13 @@ if ( ! function_exists('utcToLocal'))
 
 if ( ! function_exists('localToUtc'))
 {
+	/**
+	* Convert local datetime and timezone strings to UTC datetime
+	*
+	*	@param string $localDateTimeString
+	*	@param string $timezoneString
+	*	@return Converted UTC Datetime
+	*/
 	function localToUtc($localDateTimeString, $timezoneString) {
 		$dzt = new DateTimeZone($timezoneString);
 		$utc = new DateTimeZone('UTC');
