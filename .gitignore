@@ -6,5 +6,4 @@ composer.lock
 /app/config/sendGridConfig.php
 /app/config/defaultMailConfig.php
 /app/config/local/*
-/app/config/testing/*
 .DS_Store
