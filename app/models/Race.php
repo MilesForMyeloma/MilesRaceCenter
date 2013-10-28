@@ -1,6 +1,6 @@
 <?php
 
-class Race extends Eloquent {
+class Race extends Illuminate\Database\Eloquent\Model {
 
 	protected $appends = array('startLocal','endLocal');
 

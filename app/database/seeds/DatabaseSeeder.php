@@ -9,9 +9,7 @@ class DatabaseSeeder extends Seeder {
 	 */
 	public function run()
 	{
-		if(App::environment() != 'testing') {
-			Eloquent::unguard();
-		}
+		Illuminate\Database\Eloquent\Model::unguard();
 
 		// $this->call('UserTableSeeder');
 		$this->call('SentryGroupSeeder');
