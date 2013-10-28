@@ -6,7 +6,8 @@ class RacesController extends BaseController {
 	/**
 	*
 	*/
-	public function __construct(Race $race) {
+	public function __construct(Race $race)
+	{
 		$this->race = $race;
 	}
 
@@ -85,12 +86,21 @@ class RacesController extends BaseController {
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
+	 * @param  string  $slug
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($slug)
 	{
-		//
+		if(Sentry::check() && Sentry::getUser()->hasAccess('admin'))
+		{
+			$race = $this->race->where('slug',$slug)->first();
+			$race->delete();
+			Session::flash('info', 'Race deleted.');
+			return Redirect::to(URL::action(get_class($this).'@index'));
+		} else {
+			Session::flash('error', 'Access denied.');
+			return Redirect::to(URL::action(get_class($this).'@index'));
+		}
 	}
 
 }
