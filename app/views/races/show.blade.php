@@ -40,6 +40,10 @@ Race
 	    @if(Sentry::getUser() && Sentry::getUser()->hasAccess('admin'))
 	    <button class="btn btn-info" onClick="location.href='{{ URL::to('races/edit') }}/{{ $race->slug}}'">Edit Race</button>
 	    @endif
+
+	    @if(Sentry::getUser() && Sentry::getUser()->hasAccess('admin'))
+		<button class="btn btn btn-success pull-right" onclick="location.href='{{ URL::to('races/create') }}'">New Race</button>
+		@endif
 	</div>
 	<div class="span4">
 		<p><em>Race created: {{ $race->created_at }}</em></p>
