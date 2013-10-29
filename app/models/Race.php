@@ -20,9 +20,12 @@ class Race extends Illuminate\Database\Eloquent\Model {
 	 */
 	public function setStartLocalAttribute($startLocal)
 	{
-		// If the timezone is valid
-		if(isset(array_flip(DateTimeZone::listIdentifiers())[$this->timezone])) {
+		// Get timezones
+		$zones_by_string = array_flip(DateTimeZone::listIdentifiers());
 
+		// If the timezone is valid, use it to convert local time to UTC
+		if(isset($zones_by_string[$this->timezone])) 
+		{
 			$this->attributes['start'] = localToUtc($startLocal, $this->timezone);
 		} else {
 			dd("Invalid timezone;");
@@ -45,9 +48,12 @@ class Race extends Illuminate\Database\Eloquent\Model {
 	 */
 	public function setEndLocalAttribute($endLocal)
 	{
-		// If the timezone is valid
-		if(isset(array_flip(DateTimeZone::listIdentifiers())[$this->timezone])) {
+		// Get timezones
+		$zones_by_string = array_flip(DateTimeZone::listIdentifiers());
 
+		// If the timezone is valid, use it to convert local time to UTC
+		if(isset($zones_by_string[$this->timezone]))
+		{
 			$this->attributes['end'] = localToUtc($endLocal, $this->timezone);
 		} else {
 			dd("Invalid timezone;");
