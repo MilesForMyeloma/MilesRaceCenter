@@ -29,7 +29,13 @@ class RacesController extends BaseController {
 	 */
 	public function create()
 	{
-        return View::make('races.create');
+		if(Sentry::check() && Sentry::getUser()->hasAccess('admin'))
+		{
+	        return View::make('races.create');
+	    } else {
+			Session::flash('error', 'Access denied.');
+			return Redirect::to(URL::action(get_class($this).'@index'));
+		}
 	}
 
 	/**
@@ -39,11 +45,18 @@ class RacesController extends BaseController {
 	 */
 	public function store()
 	{
+		if(Sentry::check() && Sentry::getUser()->hasAccess('admin'))
+		{
+			$input = Input::only('slug', 'name', 'description', 'startLocal', 'endLocal', 'timezone', 'website');
+			$race = new Race($input);
+			$race->save();
+			Session::flash('info', 'Race created.');
+			return Redirect::to(URL::action(get_class($this).'@index'));
+		} else {
+			Session::flash('error', 'Access denied.');
+			return Redirect::to(URL::action(get_class($this).'@index'));
+		}
 
-		$input = Input::only('slug', 'name', 'description', 'startLocal', 'endLocal', 'timezone', 'website');
-
-		$race = new Race($input);
-		$race->save();
 	}
 
 	/**
