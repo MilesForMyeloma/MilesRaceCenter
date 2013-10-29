@@ -39,11 +39,11 @@ class RacesController extends BaseController {
 	 */
 	public function store()
 	{
-		//
 
-		$race = new Race();
+		$input = Input::only('slug', 'name', 'description', 'startLocal', 'endLocal', 'timezone', 'website');
 
-		dd(Input::all());
+		$race = new Race($input);
+		$race->save();
 	}
 
 	/**

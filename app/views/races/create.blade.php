@@ -28,6 +28,14 @@ Create Race
             </div>
         </div>	
 
+        <div class="control-group {{ ($errors->has('description')) ? 'error' : '' }}" for="description">
+            <label class="control-label" for="name">Description</label>
+            <div class="controls">
+                <input name="description" id="description" value="{{ Request::old('description') }}" type="text" class="input-xlarge" placeholder="Description">
+                {{ ($errors->has('description') ? $errors->first('description') : '') }}
+            </div>
+        </div>	
+
 		<div class="control-group {{ ($errors->has('timezone')) ? 'error' : '' }}" for="imezone">
             <label class="control-label" for="timezone">Timezone</label>
             <div class="controls">
@@ -36,19 +44,19 @@ Create Race
             </div>
         </div>	
 
-		<div class="control-group {{ ($errors->has('start')) ? 'error' : '' }}" for="start">
-            <label class="control-label" for="start">Start</label>
+		<div class="control-group {{ ($errors->has('startLocal')) ? 'error' : '' }}" for="startLocal">
+            <label class="control-label" for="startLocal">Start</label>
             <div class="controls">
-                <input name="start" id="start" value="{{ Request::old('start') }}" type="text" class="input-xlarge" placeholder="Start">
-                {{ ($errors->has('start') ? $errors->first('start') : '') }}
+                <input name="startLocal" id="startLocal" value="{{ Request::old('startLocal') }}" type="text" class="input-xlarge" placeholder="Start">
+                {{ ($errors->has('startLocal') ? $errors->first('startLocal') : '') }}
             </div>
         </div>	
 
-		<div class="control-group {{ ($errors->has('end')) ? 'error' : '' }}" for="end">
-            <label class="control-label" for="end">End</label>
+		<div class="control-group {{ ($errors->has('endLocal')) ? 'error' : '' }}" for="endLocal">
+            <label class="control-label" for="endLocal">End</label>
             <div class="controls">
-                <input name="end" id="end" value="{{ Request::old('end') }}" type="text" class="input-xlarge" placeholder="End">
-                {{ ($errors->has('end') ? $errors->first('end') : '') }}
+                <input name="endLocal" id="endLocal" value="{{ Request::old('endLocal') }}" type="text" class="input-xlarge" placeholder="End">
+                {{ ($errors->has('endLocal') ? $errors->first('endLocal') : '') }}
             </div>
         </div>	
 

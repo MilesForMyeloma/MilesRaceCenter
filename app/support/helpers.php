@@ -29,7 +29,7 @@ if ( ! function_exists('localToUtc'))
 	*
 	*	@param string $localDateTimeString
 	*	@param string $timezoneString
-	*	@return Converted UTC Datetime
+	*	@return Converted UTC datetime
 	*/
 	function localToUtc($localDateTimeString, $timezoneString) {
 		$dzt = new DateTimeZone($timezoneString);
