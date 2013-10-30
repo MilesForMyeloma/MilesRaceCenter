@@ -7,6 +7,11 @@ Project is a fork of [L4withSentry](https://github.com/rydurham/L4withSentry).
 
 [![Build Status](https://travis-ci.org/jcummins/MilesRaceCenter.png?branch=master)](https://travis-ci.org/jcummins/MilesRaceCenter)
 
+### Internals
+
+* Race times are stored as UTC and converted to local race timezone when displayed.
+* Creating a race requires admin access.
+
 ### Instructions
 
 After you have cloned this repo to your development environment, [install & run composer](http://niallobrien.me/2013/03/installing-and-updating-laravel-4/): 

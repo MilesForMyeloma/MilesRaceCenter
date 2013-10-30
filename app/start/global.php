@@ -66,3 +66,17 @@ App::error(function(Exception $exception, $code)
 */
 
 require __DIR__.'/../filters.php';
+
+/**
+ * Register custom validators
+ *
+ * @param  array $translator
+ * @param  array $data
+ * @param  array $rules
+ * @param  array $messages
+ * @return object Validator
+ */
+Validator::resolver(function($translator, $data, $rules, $messages)
+{
+        return new MilesRaceCenterValidator($translator, $data, $rules, $messages);
+});

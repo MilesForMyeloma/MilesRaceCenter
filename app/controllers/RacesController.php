@@ -49,9 +49,14 @@ class RacesController extends BaseController {
 		{
 			$input = Input::only('slug', 'name', 'description', 'startLocal', 'endLocal', 'timezone', 'website');
 			$race = new Race($input);
-			$race->save();
-			Session::flash('info', 'Race created.');
-			return Redirect::to(URL::action(get_class($this).'@index'));
+			if($race->validate($input)) {
+				$race->save();
+				Session::flash('info', 'Race created.');
+				return Redirect::to(URL::action(get_class($this).'@index'));
+			} else {
+				Session::flash('error', 'Please correct errors below.');
+				return Redirect::to(URL::action(get_class($this).'@create'))->withInput();
+			}
 		} else {
 			Session::flash('error', 'Access denied.');
 			return Redirect::to(URL::action(get_class($this).'@index'));
