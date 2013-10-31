@@ -7,8 +7,11 @@ class Race extends Illuminate\Database\Eloquent\Model {
 	protected $guarded = array();
 
 	public $rules = array(
+		'slug' => 'required|alpha_dash',
 		'timezone' => 'required|timezone'
 	);
+
+	public $validator = array();
 
 	/**
 	 * Accessor that gets an array for the race start in local time.
@@ -76,6 +79,7 @@ class Race extends Illuminate\Database\Eloquent\Model {
         // make a new validator object
         $v = Validator::make($data, $this->rules);
 
+        $this->validator = $v;
         // return the result
         return $v->passes();
     }

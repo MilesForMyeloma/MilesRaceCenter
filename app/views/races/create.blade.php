@@ -11,7 +11,6 @@ Create Race
 
 	<h1>Races</h1>
 	{{ Form::open(array('url' => URL::to('races/'), 'method' => 'post')) }}
-
 		<div class="control-group {{ ($errors->has('slug')) ? 'error' : '' }}" for="slug">
             <label class="control-label" for="slug">Slug</label>
             <div class="controls">

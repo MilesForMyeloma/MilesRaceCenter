@@ -54,8 +54,7 @@ class RacesController extends BaseController {
 				Session::flash('info', 'Race created.');
 				return Redirect::to(URL::action(get_class($this).'@index'));
 			} else {
-				Session::flash('error', 'Please correct errors below.');
-				return Redirect::to(URL::action(get_class($this).'@create'))->withInput();
+				return Redirect::to(URL::action(get_class($this).'@create'))->withInput()->withErrors($race->validator);
 			}
 		} else {
 			Session::flash('error', 'Access denied.');
