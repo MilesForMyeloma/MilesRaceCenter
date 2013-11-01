@@ -73,31 +73,40 @@ class RacesController extends BaseController {
 	{
 		$race = $this->race->where('slug',$slug)->first();
 
-		// localToUtc('2014-10-29 09:00am','America/Chicago')
-
         return View::make('races.show')->with('race',$race);
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  string  $slug
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($slug)
 	{
-        return View::make('races.edit');
+		if(Sentry::check() && Sentry::getUser()->hasAccess('admin'))
+		{
+			$input = Input::only('slug', 'name', 'description', 'startLocal', 'endLocal', 'timezone', 'website');
+			$race = $this->race->where('slug',$slug)->first();
+
+        	return View::make('races.edit')->with('race',$race);
+        } else {
+        	Session::flash('error', 'Access denied.');
+			return Redirect::to(URL::action(get_class($this).'@index'));
+        }
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
+	 * @param  slug  $slug
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($slug)
 	{
 		//
+		dd($slug);
+
 	}
 
 	/**

@@ -16,6 +16,7 @@ if ( ! function_exists('utcToLocal'))
 
 		return array(
 		'fullstring' => $dt->format('Y-m-d h:ia') .' GMT' . number_format($dzt->getOffset($dt)/3600,1),
+		'string' => $dt->format('Y-m-d h:ia'),
 		'offset' => $dzt->getOffset($dt),
 		 'datetime' => $dt
 		 );
