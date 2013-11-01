@@ -38,7 +38,7 @@ Race
 	    @endif
 
 	    @if(Sentry::getUser() && Sentry::getUser()->hasAccess('admin'))
-	    <button class="btn btn-info" onClick="location.href='{{ URL::to('races/edit') }}/{{ $race->slug}}'">Edit Race</button>
+	    <button class="btn btn-info" onClick="location.href='{{ URL::to('races/'.$race->slug.'/edit') }}'">Edit Race</button>
 	    @endif
 
 	    @if(Sentry::getUser() && Sentry::getUser()->hasAccess('admin'))

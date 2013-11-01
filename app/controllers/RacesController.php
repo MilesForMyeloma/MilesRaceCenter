@@ -104,9 +104,11 @@ class RacesController extends BaseController {
 	 */
 	public function update($slug)
 	{
-		//
-		dd($slug);
-
+		$race = $this->race->where('slug',$slug)->first();
+		$input = Input::only('slug', 'name', 'description', 'startLocal', 'endLocal', 'timezone', 'website');
+		$race->update($input);
+		Session::flash('info', 'Race created.');
+		return Redirect::to(URL::action(get_class($this).'@index'));
 	}
 
 	/**
