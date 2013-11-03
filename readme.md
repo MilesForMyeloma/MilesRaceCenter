@@ -19,6 +19,10 @@ After you have cloned this repo to your development environment, [install & run 
 	curl -sS https://getcomposer.org/installer | php
 	php composer.phar install
 
+Run the Miles Race Center Migrations:
+
+	php artisan migrate
+
 Next, run the Sentry 2 Migrations: 
 
 	php artisan migrate --package=cartalyst/sentry

@@ -14,7 +14,7 @@ class CreateRacesTable extends Migration {
 	{
 		Schema::create('races', function(Blueprint $table) {
 			$table->increments('id');
-			$table->string('slug');
+			$table->string('slug')->unique();
 			$table->string('name');
 			$table->datetime('start');
 			$table->datetime('end');

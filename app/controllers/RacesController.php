@@ -49,12 +49,13 @@ class RacesController extends BaseController {
 		{
 			$input = Input::only('slug', 'name', 'description', 'startLocal', 'endLocal', 'timezone', 'website');
 			$race = new Race($input);
-			if($race->validate($input)) {
+			$validator = Race::validateInstance($race,'create');
+			if($validator->passes()) {
 				$race->save();
 				Session::flash('info', 'Race created.');
 				return Redirect::to(URL::action(get_class($this).'@index'));
 			} else {
-				return Redirect::to(URL::action(get_class($this).'@create'))->withInput()->withErrors($race->validator);
+				return Redirect::to(URL::action(get_class($this).'@create'))->withInput()->withErrors($validator);
 			}
 		} else {
 			Session::flash('error', 'Access denied.');
@@ -106,9 +107,16 @@ class RacesController extends BaseController {
 	{
 		$race = $this->race->where('slug',$slug)->first();
 		$input = Input::only('slug', 'name', 'description', 'startLocal', 'endLocal', 'timezone', 'website');
-		$race->update($input);
-		Session::flash('info', 'Race created.');
-		return Redirect::to(URL::action(get_class($this).'@index'));
+		$validator = Race::validateInstance($race,'update',$input);
+			//dd($validator);
+			dd(array($validator->passes(),$validator->errors()));
+			if($validator->passes()) {
+				$race->update($input);
+				Session::flash('info', 'Race updated.');
+				return Redirect::to(URL::action(get_class($this).'@index'));
+			} else {
+				return Redirect::to(URL::action(get_class($this).'@edit',$race->slug))->withInput()->withErrors($validator);
+			}
 	}
 
 	/**
