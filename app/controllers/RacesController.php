@@ -49,7 +49,7 @@ class RacesController extends BaseController {
 		{
 			$input = Input::only('slug', 'name', 'description', 'startLocal', 'endLocal', 'timezone', 'website');
 			$race = new Race($input);
-			$validator = Race::validateInstance($race,'create');
+			$validator = Race::validateInstance($race,'create',$input);
 			if($validator->passes()) {
 				$race->save();
 				Session::flash('info', 'Race created.');
@@ -107,11 +107,18 @@ class RacesController extends BaseController {
 	{
 		$race = $this->race->where('slug',$slug)->first();
 		$input = Input::only('slug', 'name', 'description', 'startLocal', 'endLocal', 'timezone', 'website');
-		$validator = Race::validateInstance($race,'update',$input);
-			//dd($validator);
-			dd(array($validator->passes(),$validator->errors()));
+
+		$validator = Validator::make($input, Race::getValidationRules());
+		// pass the race, what we want to do to it, and the input, expect a validator object
 			if($validator->passes()) {
-				$race->update($input);
+				$race->slug = $input['slug'];
+				$race->name = $input['name'];
+				$race->description = $input['description'];
+				$race->startLocal = $input['startLocal'];
+				$race->endLocal = $input['endLocal'];
+				$race->timezone = $input['timezone'];
+				$race->website = $input['website'];
+				$race->save();
 				Session::flash('info', 'Race updated.');
 				return Redirect::to(URL::action(get_class($this).'@index'));
 			} else {

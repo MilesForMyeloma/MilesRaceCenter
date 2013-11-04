@@ -1,38 +1,16 @@
 <?php
 
-class Race extends Illuminate\Database\Eloquent\Model {
+class Race extends Eloquent {
 
 	public $validator = array();
 
-	public static $createRules = array(
-		'slug' => 'required|alpha_dash|unique:races',
+	public static $rules = [
+  		'slug' => 'required|alpha_dash|unique:races,slug,:id',
 		'timezone' => 'required|timezone'
-	);
-	public static $updateRules = array (
-		'slug' => 'required|alpha_dash|unique:races,slug,{ID}',
-		'timezone' => 'required|timezone'
-	);
+	];
 
 	protected $appends = array('startLocal','endLocal');
 	protected $guarded = array();
-
- 	public static function boot()
-    {
-    	parent::boot();
-
-		static::creating(function($race)
-        {
-
-            return Race::validateInstance($race,'create')->passes();
-
-        });
-
-    	static::updating(function($race)
-        {
-            return Race::validateInstance($race,'update',$race->getOriginal())->passes();
-        });
-
-    }
 
 	/**
 	 * Accessor that gets an array for the race start in local time.
@@ -89,47 +67,52 @@ class Race extends Illuminate\Database\Eloquent\Model {
 	}
 
 	/**
-	* Validates a race against instance
-	*
-	* Validates a race instance against a set of validation rules
-	* that are defined for that action
-	* 
-	* @param array $data
-	* @param string $validationMethod
-	* @return Validator
-	*/
-    public static function validateInstance($race, $validationMethod, $input) {
-    	$rules = '';
-
-    	if( $validationMethod == 'create' )
-    	{
-    		// Transform validation rules to be permissive
-    		$rules = self::$createRules;
-
-    		return Validator::make($race->attributes, self::$createRules);
-
-    	} elseif ( $validationMethod == 'update' ) {
-    		
-    		// we're updating but not changing the slug
-    		if(strcmp($race->attributes['slug'], $input['slug'])==0) 
-    		{
-
-    			$rules = self::$updateRules;
-
-    			$variables = array('id' => $race->attributes['id']);
-    		
-    			foreach($variables as $key => $value)
-    			{
-			    	$rules = str_replace('{'.strtoupper($key).'}', $value, $rules);
-				}
-				return Validator::make($race->attributes, $rules);
-    		} else {
-    			$rules = self::$createRules;
-    			return Validator::make($race->attributes, $rules);
-    		}
-
-    	} else {
-    		throw new Exception('Invalid validation method, please use either: create or update.');
-    	}
+     * Get validation rules and take care of own id on update
+     * @param null $id
+     * @return array
+     */
+    public static function getValidationRules($id = null)
+    {
+        $rules = self::$rules;
+ 
+        if($id === null)
+        {
+            return $rules;
+        }
+ 
+        array_walk($rules, function(&$rules, $field) use ($id)
+        {
+            if(!is_array($rules))
+            {
+                $rules = explode("|", $rules);
+            }
+ 
+            foreach($rules as $ruleIdx => $rule)
+            {
+                // get name and parameters
+                @list($name, $params) = explode(":", $rule);
+ 
+                // only do someting for the unique rule
+                if(strtolower($name) != "unique") {
+                    continue; // continue in foreach loop, nothing left to do here
+                }
+ 
+                $p = array_map("trim", explode(",", $params));
+ 
+                // set field name to rules key ($field) (laravel convention)
+                if(!isset($p[1])) {
+                    $p[1] = $field;
+                }
+ 
+                // set 3rd parameter to id given to getValidationRules()
+                $p[2] = $id;
+ 
+                $params = implode(",", $p);
+                $rules[$ruleIdx] = $name.":".$params;
+            }
+        });
+ 
+        return $rules;
     }
+    
 }
