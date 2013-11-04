@@ -5,7 +5,7 @@ class Race extends Eloquent {
 	public $validator = array();
 
 	public static $rules = [
-  		'slug' => 'required|alpha_dash|unique:races,slug,:id',
+  		'slug' => 'required|alpha_dash|unique:races',
 		'timezone' => 'required|timezone'
 	];
 
@@ -114,5 +114,5 @@ class Race extends Eloquent {
  
         return $rules;
     }
-    
+
 }
