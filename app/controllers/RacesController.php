@@ -18,7 +18,7 @@ class RacesController extends BaseController {
 	 */
 	public function index()
 	{
-		$races = Race::all();
+		$races = $this->race->all();
         return View::make('races.index')->with('races',$races);
 	}
 
