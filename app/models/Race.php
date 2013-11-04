@@ -4,10 +4,10 @@ class Race extends Eloquent {
 
 	public $validator = array();
 
-	public static $rules = [
+	public static $rules = array(
   		'slug' => 'required|alpha_dash|unique:races',
 		'timezone' => 'required|timezone'
-	];
+	);
 
 	protected $appends = array('startLocal','endLocal');
 	protected $guarded = array();
