@@ -108,7 +108,7 @@ class RacesController extends BaseController {
 		$race = $this->race->where('slug',$slug)->first();
 		$input = Input::only('slug', 'name', 'description', 'startLocal', 'endLocal', 'timezone', 'website');
 
-		$validator = Validator::make($input, Race::getValidationRules());
+		$validator = Validator::make($input, Race::getValidationRules($race->id));
 		// pass the race, what we want to do to it, and the input, expect a validator object
 			if($validator->passes()) {
 				$race->slug = $input['slug'];
