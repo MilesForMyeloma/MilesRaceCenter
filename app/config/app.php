@@ -183,4 +183,6 @@ return array(
 
 	),
 
+	'timezoneSelectList' => array(''=>'') + array_combine(DateTimeZone::listIdentifiers(),DateTimeZone::listIdentifiers()),
+
 );
