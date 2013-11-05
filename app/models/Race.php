@@ -2,71 +2,77 @@
 
 class Race extends Eloquent {
 
-	public $validator = array();
+    public $validator = array();
 
-	public static $rules = array(
-  		'slug' => 'required|alpha_dash|unique:races',
-		'timezone' => 'required|timezone'
-	);
+    public static $rules = array(
+        'slug' => 'required|alpha_dash|unique:races',
+        'timezone' => 'required|timezone',
+        'startLocal' => 'date'
+    );
 
-	protected $appends = array('startLocal','endLocal');
-	protected $guarded = array();
+    protected $appends = array('startLocal','endLocal');
+    protected $guarded = array();
 
-	/**
-	 * Accessor that gets an array for the race start in local time.
-	 *
-	 * @return array
-	 */
-	public function getStartLocalAttribute()
-	{
-		return utcToLocal($this->start, $this->timezone);
-	}
+    /**
+     * Accessor that gets an array for the race start in local time.
+     *
+     * @return array
+     */
+    public function getStartLocalAttribute()
+    {
+        return utcToLocal($this->start, $this->timezone);
+    }
 
-	/**
-	 * Mutator that sets event start time in UTC based on a local date time string and timezone
-	 *
-	 * @param  string  $startLocal
-	 */
-	public function setStartLocalAttribute($startLocal)
-	{
-		// Get timezones
-		$zones_by_string = array_flip(DateTimeZone::listIdentifiers());
+    /**
+     * Mutator that sets event start time in UTC based on a local date time string and timezone
+     *
+     * @param  string  $startLocal
+     */
+    public function setStartLocalAttribute($startLocal)
+    {
+        // Get timezones
+        $zones_by_string = array_flip(DateTimeZone::listIdentifiers());
 
-		// If the timezone is valid, use it to convert local time to UTC
-		if(isset($zones_by_string[$this->timezone])) 
-		{
-			$this->attributes['start'] = localToUtc($startLocal, $this->timezone);
-		}
-	}
+        // If the timezone is valid, use it to convert local time to UTC
+        if(isset($zones_by_string[$this->timezone])) 
+        {
+            if(strtotime($startLocal)!==false) {
+                $this->attributes['start'] = localToUtc($startLocal, $this->timezone);
+            }
+        }
+    }
 
-	/**
-	 * Accessor that gets an array for the race end in local time.
-	 *
-	 * @return array
-	 */
-	public function getEndLocalAttribute()
-	{
-		return utcToLocal($this->end, $this->timezone);
-	}
+    /**
+     * Accessor that gets an array for the race end in local time.
+     *
+     * @return array
+     */
+    public function getEndLocalAttribute()
+    {
+        return utcToLocal($this->end, $this->timezone);
+    }
 
-	/**
-	 * Mutator that sets the event end time in UTC based on a local date time string and timezone
-	 *
-	 * @param  string  $endLocal
-	 */
-	public function setEndLocalAttribute($endLocal)
-	{
-		// Get timezones
-		$zones_by_string = array_flip(DateTimeZone::listIdentifiers());
+    /**
+     * Mutator that sets the event end time in UTC based on a local date time string and timezone
+     *
+     * @param  string  $endLocal
+     */
+    public function setEndLocalAttribute($endLocal)
+    {
+        // Get timezones
+        $zones_by_string = array_flip(DateTimeZone::listIdentifiers());
 
-		// If the timezone is valid, use it to convert local time to UTC
-		if(isset($zones_by_string[$this->timezone]))
-		{
-			$this->attributes['end'] = localToUtc($endLocal, $this->timezone);
-		}
-	}
+        // If the timezone is valid, use it to convert local time to UTC
+        if(isset($zones_by_string[$this->timezone]))
+        {
+            if(isset($zones_by_string[$this->timezone])) 
+            {
+                $this->attributes['end'] = localToUtc($endLocal, $this->timezone);
+            }
+        }
+    }
 
-	/**
+    /**
      * Get validation rules and take care of own id on update
      * @param null $id
      * @return array
