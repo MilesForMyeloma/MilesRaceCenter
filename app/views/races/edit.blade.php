@@ -35,7 +35,7 @@ Edit Race
             </div>
         </div>	
 
-		<div class="control-group {{ ($errors->has('timezone')) ? 'error' : '' }}" for="imezone">
+		<div class="control-group {{ ($errors->has('timezone')) ? 'error' : '' }}" for="timezone">
             <label class="control-label" for="timezone">Timezone</label>
             <div class="controls">
                 <input name="timezone" id="timezone" value="{{ (Request::old('timezone')) ? Request::old("timezone") : $race->timezone }}" type="text" class="input-xlarge" placeholder="Timezone">

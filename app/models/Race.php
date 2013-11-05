@@ -7,7 +7,8 @@ class Race extends Eloquent {
     public static $rules = array(
         'slug' => 'required|alpha_dash|unique:races',
         'timezone' => 'required|timezone',
-        'startLocal' => 'date'
+        'startLocal' => 'date',
+        'endLocal' => 'date'
     );
 
     protected $appends = array('startLocal','endLocal');

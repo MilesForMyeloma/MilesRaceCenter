@@ -34,14 +34,26 @@ Create Race
                 {{ ($errors->has('description') ? $errors->first('description') : '') }}
             </div>
         </div>	
-
-		<div class="control-group {{ ($errors->has('timezone')) ? 'error' : '' }}" for="imezone">
+<!--
+		<div class="control-group {{ ($errors->has('timezone')) ? 'error' : '' }}" for="timezone">
             <label class="control-label" for="timezone">Timezone</label>
             <div class="controls">
                 <input name="timezone" id="timezone" value="{{ Request::old('timezone') }}" type="text" class="input-xlarge" placeholder="Timezone">
                 {{ ($errors->has('timezone') ? $errors->first('timezone') : '') }}
             </div>
-        </div>	
+        </div>
+-->
+        <div class="control-group {{ ($errors->has('timezone')) ? 'error' : '' }}" for="timezone">
+            <label class="control-label" for="timezone">Timezone</label>
+            <div class="controls">
+                <?php $dt = DateTimeZone::listIdentifiers() ?>
+                <?php 
+                    array_unshift($dt, '');
+                ?>
+                {{ Form::select('timezone', $dt, Request::old('timezone') ? Request::old('timezone') : '') }}
+                {{ ($errors->has('timezone') ? $errors->first('timezone') : '') }}
+            </div>
+        </div>  
 
 		<div class="control-group {{ ($errors->has('startLocal')) ? 'error' : '' }}" for="startLocal">
             <label class="control-label" for="startLocal">Start</label>
