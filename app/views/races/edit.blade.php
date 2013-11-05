@@ -28,7 +28,7 @@ Edit Race
         </div>	
 
         <div class="control-group {{ ($errors->has('description')) ? 'error' : '' }}" for="description">
-            <label class="control-label" for="name">Description</label>
+            <label class="control-label" for="description">Description</label>
             <div class="controls">
                 <input name="description" id="description" value="{{ (Request::old('description')) ? Request::old("description") : $race->description }}" type="text" class="input-xlarge" placeholder="Description">
                 {{ ($errors->has('description') ? $errors->first('description') : '') }}
