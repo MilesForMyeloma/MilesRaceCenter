@@ -9,32 +9,32 @@ Race
 {{-- Content --}}
 @section('content')
 
-<h1>View Race: {{ $race->name }}</h1>
+<h1>View Race: {{{ $race->name }}}</h1>
 
 	<div class="well clearfix">
     <div class="span7">
 	    @if ($race->slug)
-	    <p><strong>Slug:</strong> {{ $race->slug }} </p>
+	    <p><strong>Slug:</strong> {{{ $race->slug }}} </p>
 		@endif
 
 		@if ($race->description)
-	    <p><strong>Description:</strong> {{ $race->description }} </p>
+	    <p><strong>Description:</strong> {{{ $race->description }}} </p>
 		@endif
 
 		@if ($race->start && $race->timezone)
-		<p><strong>Start:</strong> {{ $race->startLocal['fullstring'] }}</p>
+		<p><strong>Start:</strong> {{{ $race->startLocal['fullstring'] }}}</p>
 		@endif
 
 		@if ($race->end && $race->timezone)
-		<p><strong>End:</strong> {{ $race->endLocal['fullstring'] }}</p>
+		<p><strong>End:</strong> {{{ $race->endLocal['fullstring'] }}}</p>
 		@endif	
 
 		@if ($race->timezone)
-		<p><strong>Timezone:</strong> {{ $race->timezone }}</p>
+		<p><strong>Timezone:</strong> {{{ $race->timezone }}}</p>
 		@endif		
 
 	    @if ($race->website)
-	    <p><strong>Website:</strong> {{ $race->website }}</p>
+	    <p><strong>Website:</strong> {{{ $race->website }}}</p>
 	    @endif
 
 	    @if(Sentry::getUser() && Sentry::getUser()->hasAccess('admin'))
