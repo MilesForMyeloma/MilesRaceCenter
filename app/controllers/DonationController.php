@@ -4,6 +4,15 @@
 
 class DonationController extends BaseController {
 
+	protected $donations;
+	/**
+	*
+	*/
+	public function __construct(Donation $race)
+	{
+		$this->donation = $donation;
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -94,7 +103,7 @@ class DonationController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		
 	}
 
 }
