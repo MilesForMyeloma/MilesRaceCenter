@@ -1,7 +1,7 @@
 ## Race Center for Miles for Myeloma
 
-This is an event management, registration, and donation system built for Miles for Myeloma. 
-It is currently under development and the core functionality does not exist yet.
+This is an event management, registration, and donation system built for Miles for Myeloma, a non-profit based in Iowa City, Iowa.
+It is currently under heavy development and much of the core functionality still does not exist.
 
 Project is a fork of [L4withSentry](https://github.com/rydurham/L4withSentry).
 
@@ -31,7 +31,10 @@ Use the seeds provided in this repo to set up the initial user accounts:
 
 	php artisan db:seed
 
-Edit the /app/config/mail.php to work for your dev environment and then you should be good to go. 
+Edit the following config files:
+* /app/config/mail.php -- Email configuration
+* /app/config/app.php -- Payment method configuration
+* /app/config/database.php -- Database configuration
 
 ### Seeds
 The seeds in this repo will create two groups and two user accounts.
