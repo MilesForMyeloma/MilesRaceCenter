@@ -5,7 +5,7 @@ It is currently under heavy development and much of the core functionality still
 
 Project is a fork of [L4withSentry](https://github.com/rydurham/L4withSentry).
 
-[![Build Status](https://travis-ci.org/jcummins/MilesRaceCenter.png?branch=master)](https://travis-ci.org/jcummins/MilesRaceCenter)
+[![Build Status](https://travis-ci.org/jcummins/MilesRaceCenter.png?branch=master)](https://travis-ci.org/jcummins/MilesRaceCenter) [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/jcummins/MilesRaceCenter/badges/quality-score.png?s=c4b7090ffa64dcc5a18c4f9abc1b1605761d159f)](https://scrutinizer-ci.com/g/jcummins/MilesRaceCenter/) [![Dependencies Status](https://depending.in/jcummins/MilesRaceCenter.png)](http://depending.in/jcummins/MilesRaceCenter)
 
 ### Internals
 

@@ -48,7 +48,7 @@ class DonationController extends BaseController {
 
         /*
 
-            PAYPAL -- BROKEN
+            PAYPAL -- WORKING
 
         */
 
@@ -80,23 +80,38 @@ class DonationController extends BaseController {
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new donation.
      *
      * @return Response
      */
     public function create()
     {
-       // return View::make('donations.create');
+        // return View::make('donations.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Determine payment method, send params to model
+     * select next step.
+     * If they choose stripe, make api call, if they use 
+     * paypal express, redirect them.
      *
      * @return Response
      */
     public function store()
     {
-        //
+        // 
+    }
+
+    /**
+     * If they used paypal express or got redirected
+     * handle the redirect back to us. Store the 
+     * donation.
+     *
+     * @return Response
+     */
+    public function confirm($processor)
+    {
+        // 
     }
 
     /**
