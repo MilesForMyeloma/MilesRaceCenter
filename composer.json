@@ -4,7 +4,8 @@
 		"cartalyst/sentry": "2.0.*",
 		"way/generators": "dev-master",
 		"mockery/mockery": "dev-master@dev",
-		"omnipay/omnipay": "1.*"
+		"omnipay/stripe": "~2.0",
+		"omnipay/paypal": "~2.0"
 	},
 	"autoload": {
 		"classmap": [
