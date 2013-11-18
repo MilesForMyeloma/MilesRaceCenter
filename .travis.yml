@@ -9,4 +9,8 @@ before_script:
   - curl -s http://getcomposer.org/installer | php
   - php composer.phar install --prefer-dist
 
-script: phpunit
+script: phpunit --coverage-clover "clover"
+
+after_success:
+    - wget https://scrutinizer-ci.com/ocular.phar
+    - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
