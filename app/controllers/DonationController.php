@@ -22,12 +22,12 @@ class DonationController extends BaseController {
     public function index()
     {
     
-        /* 
+         
 
-            OMNIPAY -- WORKING
-
-        $gateway = GatewayFactory::create('Stripe');
-        $gateway->setApiKey(Config::get('app.stripe.apikey',''));
+        /*    OMNIPAY -- WORKING
+        $factory = new GatewayFactory();
+        $gateway = $factory->create('Stripe');
+        $gateway->setApiKey(Config::get('app.payment.stripe.apikey',''));
 
         $formData = array('number' => '4242424242424242', 'expiryMonth' => '6', 'expiryYear' => '2016', 'cvv' => '123');
         $card = new CreditCard($formData);
@@ -44,18 +44,18 @@ class DonationController extends BaseController {
             dd($response->getMessage());
         }
         //return View::make('donations.index');
-        */
-
-        /*
-
-            PAYPAL -- WORKING
+        
 
         */
 
-        $gateway = GatewayFactory::create('PayPal_Express');
-        $gateway->setUsername(Config::get('app.paypalexpress.apiusername',''));
-        $gateway->setPassword(Config::get('app.paypalexpress.apipassword',''));
-        $gateway->setSignature(Config::get('app.paypalexpress.apisignature',''));
+        //   PAYPAL -- WORKING
+
+        
+        $factory = new GatewayFactory();
+        $gateway = $factory->create('PayPal_Express');
+        $gateway->setUsername(Config::get('app.payment.paypalexpress.apiusername',''));
+        $gateway->setPassword(Config::get('app.payment.paypalexpress.apipassword',''));
+        $gateway->setSignature(Config::get('app.payment.paypalexpress.apisignature',''));
         $gateway->setTestMode(true);
 
         $response = $gateway->purchase(
@@ -77,6 +77,8 @@ class DonationController extends BaseController {
             // payment failed: display message to customer
             dd($response->getMessage());
         }
+
+
     }
 
     /**
