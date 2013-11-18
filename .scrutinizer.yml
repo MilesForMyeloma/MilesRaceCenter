@@ -1,7 +1,2 @@
-before_commands:
-    - "composer install --prefer-source"
-
 tools:
-    external_code_coverage:
-        timeout: 600
-        enabled: true
+    external_code_coverage: true
