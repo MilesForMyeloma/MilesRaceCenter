@@ -1,0 +1,15 @@
+{
+	"build_systems":
+	[
+		{
+			"name": "PHPUNIT",
+			"shell_cmd": "phpunit"
+		}
+	],
+	"folders":
+	[
+		{
+			"path": "/Users/jimcummins/Documents/MilesRaceCenter"
+		}
+	]
+}

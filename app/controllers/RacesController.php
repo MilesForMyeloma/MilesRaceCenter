@@ -8,7 +8,7 @@ class RacesController extends BaseController {
     */
     public function __construct(Race $race)
     {
-        $this->race = $race;
+        $this->race = $race;  
     }
 
     /**

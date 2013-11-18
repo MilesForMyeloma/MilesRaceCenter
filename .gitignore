@@ -7,3 +7,6 @@ composer.lock
 /app/config/defaultMailConfig.php
 /app/config/local/*
 .DS_Store
+/report
+/build
+milesracecenter.sublime-workspace
