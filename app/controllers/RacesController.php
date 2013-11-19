@@ -48,11 +48,11 @@ class RacesController extends BaseController {
         if(Sentry::check() && Sentry::getUser()->hasAccess('admin'))
         {
             $input = Input::only('slug', 'name', 'description', 'startLocal', 'endLocal', 'timezone', 'website');
-            $race = new Race($input);
+            $this->race = new Race($input);
             $validator = Validator::make($input, Race::getValidationRules());
 
             if($validator->passes()) {
-                $race->save();
+                $this->race->save();
                 Session::flash('info', 'Race created.');
                 return Redirect::to(URL::action(get_class($this).'@index'));
             } else {
@@ -106,16 +106,22 @@ class RacesController extends BaseController {
      */
     public function update($slug)
     {
-        $race = $this->race->where('slug',$slug)->first();
-        $input = Input::only('slug', 'name', 'description', 'startLocal', 'endLocal', 'timezone', 'website');
-        $validator = Validator::make($input, Race::getValidationRules($race->id));
-        
-        if($validator->passes()) {
-            $race->update($input);
-            Session::flash('info', 'Race updated.');
-            return Redirect::to(URL::action(get_class($this).'@index'));
+        if(Sentry::check() && Sentry::getUser()->hasAccess('admin'))
+        {
+            $race = $this->race->where('slug',$slug)->first();
+            $input = Input::only('slug', 'name', 'description', 'startLocal', 'endLocal', 'timezone', 'website');
+            $validator = Validator::make($input, Race::getValidationRules($race->id));
+            
+            if($validator->passes()) {
+                $race->update($input);
+                Session::flash('info', 'Race updated.');
+                return Redirect::to(URL::action(get_class($this).'@index'));
+            } else {
+                return Redirect::to(URL::action(get_class($this).'@edit',$race->slug))->withInput()->withErrors($validator);
+            }
         } else {
-            return Redirect::to(URL::action(get_class($this).'@edit',$race->slug))->withInput()->withErrors($validator);
+            Session::flash('error', 'Access denied.');
+            return Redirect::to(URL::action(get_class($this).'@index'));
         }
     }
 

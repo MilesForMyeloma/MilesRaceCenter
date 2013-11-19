@@ -30,7 +30,7 @@ class Race extends Eloquent {
      * @param  string  $startLocal
      */
     public function setStartLocalAttribute($startLocal)
-    {
+    {   
         // Get timezones
         $zones_by_string = array_flip(DateTimeZone::listIdentifiers());
 

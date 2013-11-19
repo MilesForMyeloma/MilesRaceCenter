@@ -123,31 +123,70 @@ class RacesControllerTest extends TestCase {
         $this->assertRedirectedToAction('RacesController@create');
         $this->assertSessionHasErrors();
 
-        // Input is provided 
-        //$this->assertSessionHas('info','Race created.');
+        $now = date('Y-m-d H:i:s');
+
+        // Store a race
+        $this->app->instance('Race', $this->mock);
+        $this->call('post',URL::action('RacesController@store'),array(
+            'slug'=>'yard-for-mm',
+            'name'=>'Yards for Myeloma',
+            'timezone'=>'America/Chicago',
+            'startLocal'=>'2014-10-29 14:00',
+            'endLocal'=>'2014-10-29 18:00',
+            'description'=>'A race to run funds for Multiple Myeloma research',
+            'website'=>'http://www.yardsformm.com',
+            'created_at'=>$now,
+            'updated_at'=>$now,
+        ));
+        $this->assertRedirectedToAction('RacesController@index');
+        $this->assertSessionHas('info','Race created.'); 
     }
 
-    public function testRacesDelete()
+    public function testRacesEditAsUser()
     {
+        // Be a user
+        $this->beUser();
 
-        // Be an admin
-        $this->beAdmin();
-
-        // Delete the race
-        $response = $this->delete(URL::action('RacesController@destroy', 'miles-for-mm'));
-        $this->assertTrue(strcmp(Session::get('info'),'Race deleted.')===0,'Incorrect redirection message returned.');
-
-        // Redirect back to the index
+        // Don't allow users to edit races
+        $this->get(URL::action('RacesController@edit','miles-for-mm'));
         $this->assertRedirectedToAction('RacesController@index');
+        $this->assertSessionHas('error','Access denied.');
+
+    }
+
+    public function testRacesUpdateAsUser()
+    {
+        // Be a user
+        $this->beUser();
+
+        // Don't allow users to edit races
+        $this->put(URL::action('RacesController@update','miles-for-mm'));
+        $this->assertRedirectedToAction('RacesController@index');
+        $this->assertSessionHas('error','Access denied.');
+
+    }
+
+    public function testRacesDeleteAsUser()
+    {
 
         // Be a user
         $this->beUser();
 
         // Delete the race
         $response = $this->delete(URL::action('RacesController@destroy', 'miles-for-mm'));
-        $this->assertTrue(strcmp(Session::get('error'),'Access denied.')===0,'User did not get access denied when deleting race.');
+        $this->assertRedirectedToAction('RacesController@index');
+        $this->assertSessionHas('error','Access denied.');
 
-        // Redirect back to the index
+    }
+
+    public function testRacesDeleteAsAdmin()
+    {
+        // Be an admin
+        $this->beAdmin();
+
+        // Delete the race
+        $response = $this->delete(URL::action('RacesController@destroy', 'miles-for-mm'));
+        $this->assertSessionHas('info','Race deleted.');
         $this->assertRedirectedToAction('RacesController@index');
     }
 
