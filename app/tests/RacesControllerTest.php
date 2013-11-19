@@ -46,7 +46,7 @@ class RacesControllerTest extends TestCase {
 
         $now = date('Y-m-d H:i:s');
 
-        /* Check to make sure the all method is called on the model */
+        // Check to make sure the all method is called on the model
         $this->mock
            ->shouldReceive('all')
            ->once()->andReturn(
@@ -78,6 +78,49 @@ class RacesControllerTest extends TestCase {
         $this->assertViewHas('races');
 
 
+    }
+
+    public function testRacesCreateAsUser()
+    {
+        // Be a user
+        $this->beUser();
+
+        // Don't allow users to create races
+        $this->get(URL::action('RacesController@create'));
+        $this->assertRedirectedToAction('RacesController@index');
+        $this->assertSessionHas('error','Access denied.');
+    }
+
+    public function testRacesCreateAsAdmin()
+    {
+        // Be an admin
+        $this->beAdmin();
+
+        // Allow admins to create races
+        $this->get(URL::action('RacesController@create'));
+        $this->assertResponseOk();
+    }
+
+    public function testRacesStoreAsUser()
+    {
+        // Be a user
+        $this->beUser();
+
+        // Don't allow users to store races
+        $this->post(URL::action('RacesController@store'));
+        $this->assertRedirectedToAction('RacesController@index');
+        $this->assertSessionHas('error','Access denied.');
+
+    }
+
+    public function testRacesStoreAsAdmin()
+    {
+        // Be a user
+        $this->beAdmin();
+/*
+        $this->post(URL::action('RacesController@store'));
+        $this->assertRedirectedToAction('RacesController@create');
+        $this->assertViewHas('errors'); */
     }
 
     public function testRacesDelete()

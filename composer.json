@@ -5,7 +5,8 @@
 		"way/generators": "dev-master",
 		"mockery/mockery": "dev-master@dev",
 		"omnipay/stripe": "~2.0",
-		"omnipay/paypal": "~2.0"
+		"omnipay/paypal": "~2.0",
+		"phpunit/phpunit": "3.8.*@dev"
 	},
 	"autoload": {
 		"classmap": [

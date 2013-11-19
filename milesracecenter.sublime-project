@@ -5,11 +5,21 @@
 			"path": "./"
 		}
 	],
+    "settings":
+    {
+        "filename_filter": "\\.(php|.html.blade)$",
+        "build_on_save": 1
+    },
     "build_systems":
     [
         {
             "name": "PHPUNIT",
-            "shell_cmd": "phpunit"
+            "path": "/usr/local/php5/bin",
+            "cmd": [
+                "$project_path/vendor/bin/phpunit",
+                "--coverage-clover=$project_path/build/logs/clover.xml",
+                "--configuration=$project_path/phpunit.xml"
+            ]
         }
     ]
 }
