@@ -117,10 +117,14 @@ class RacesControllerTest extends TestCase {
     {
         // Be a user
         $this->beAdmin();
-/*
+
+        // No input provided
         $this->post(URL::action('RacesController@store'));
         $this->assertRedirectedToAction('RacesController@create');
-        $this->assertViewHas('errors'); */
+        $this->assertSessionHasErrors();
+
+        // Input is provided 
+        //$this->assertSessionHas('info','Race created.');
     }
 
     public function testRacesDelete()
