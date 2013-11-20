@@ -9,7 +9,7 @@ Create Race
 {{-- Content --}}
 @section('content')
 
-    <h1>Races</h1>
+    <h1>Create Race</h1>
     {{ Form::open(array('url' => URL::to('races/'), 'method' => 'post')) }}
         <div class="control-group {{ ($errors->has('slug')) ? 'error' : '' }}" for="slug">
             <label class="control-label" for="slug">Slug</label>
@@ -71,6 +71,21 @@ Create Race
             <input class="btn-primary btn" type="submit" value="Create"> 
             <input class="btn " type="reset" value="Reset">
         </div>  
-
+        
     {{ Form::close() }}
+@stop
+
+@section('js')
+
+    {{-- Don't update timezone if returning with errors --}}
+    @if(!$errors->any())
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.4/jstz.min.js"></script>
+    <script>
+    $(function(){
+        // Detect the client timezone and select it
+        var tz = jstz.determine();
+        document.getElementsByName('timezone')[0].value=tz.name();
+    });
+    </script>
+    @endif
 @stop

@@ -3,7 +3,7 @@
 {{-- Web site Title --}}
 @section('title')
 @parent
-Race
+{{{ $race->name }}}
 @stop
 
 {{-- Content --}}
@@ -46,8 +46,8 @@ Race
 		@endif
 	</div>
 	<div class="span4">
-		<p><em>Race created: {{ $race->created_at }}</em></p>
-		<p><em>Last Updated: {{ $race->updated_at }}</em></p>
+		<p><em>Race created: {{{ $race->created_at }}}</em></p>
+		<p><em>Last Updated: {{{ $race->updated_at }}}</em></p>
 	</div>
 </div>
 
