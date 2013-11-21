@@ -4,6 +4,7 @@ global:
 web1:
   name: laravel4
   document_root: public
+  php_version: 5.4.14
   shared_writable_dirs:
     - app/storage/cache
     - app/storage/logs
