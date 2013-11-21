@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'default' => 'mysql',
+	'default' => 'local',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ return array(
 	*/
 
 	'connections' => array(
-
+		/*
 		'sqlite' => array(
 			'driver'   => 'sqlite',
 			'database' => __DIR__.'/../database/production.sqlite',
@@ -82,7 +82,7 @@ return array(
 			'password' => '',
 			'prefix'   => '',
 		),
-
+		*/
 	),
 
 	/*

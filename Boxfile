@@ -1,3 +1,6 @@
+global:
+  env:
+    - LARAVEL_ENV: production
 web1:
   name: laravel4
   document_root: public
@@ -8,10 +11,19 @@ web1:
     - app/storage/sessions
     - app/storage/views
   php_extensions:
+    - pdo_mysql
     - mcrypt
+    - curl
   zend_extensions:
     - xcache
     - xdebug
+  before_deploy:
+    - "php artisan migrate"
+    - "php artisan migrate --package=cartalyst/sentry"
+    - "php artisan db:seed"
+  after_deploy:
+    - "rm -f storage/cache/*"
+    - "rm -f storage/views/*"
   after_build:
     - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi;"
     - "php composer.phar --prefer-source install"
