@@ -20,7 +20,7 @@ web1:
     - xcache
     - xdebug
   after_build:
-    - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi;"
+    - "curl -s https://getcomposer.org/installer | php"
     - "php composer.phar install --prefer-source"
   before_deploy:
     - "php artisan migrate --env=production"
