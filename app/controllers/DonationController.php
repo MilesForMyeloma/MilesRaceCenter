@@ -61,8 +61,8 @@ class DonationController extends BaseController {
         $response = $gateway->purchase(
             array(
                 'amount' => '10.00', 
-                'cancelUrl'=>'http://localhost',
-                'returnUrl'=>'http://localhost/paypalexpress_confirm',
+                'cancelUrl'=>Config::get('app.url'),
+                'returnUrl'=>Config::get('app.url').'/paypalexpress_confirm',
             )
         )->send();
 

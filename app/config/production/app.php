@@ -26,7 +26,7 @@ return array(
     |
     */
 
-    'url' => 'http://milesracecenter.gopagoda.com/',
+    'url' => 'http://milesracecenter.gopagoda.com',
 
     /*
     |--------------------------------------------------------------------------
