@@ -20,7 +20,7 @@ web1:
     - xdebug
   after_build:
     - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi;"
-    - "php composer.phar --prefer-source install"
+    - "php composer.phar install --prefer-source"
   before_deploy:
     - "php artisan migrate --env=production"
     - "php artisan migrate --package=cartalyst/sentry --env=production"
