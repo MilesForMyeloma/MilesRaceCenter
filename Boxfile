@@ -13,10 +13,14 @@ web1:
   php_extensions:
     - pdo_mysql
     - mcrypt
+    - mbstring
     - curl
   zend_extensions:
     - xcache
     - xdebug
+  after_build:
+    - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi;"
+    - "php composer.phar --prefer-source install"
   before_deploy:
     - "php artisan migrate"
     - "php artisan migrate --package=cartalyst/sentry"
@@ -24,6 +28,3 @@ web1:
   after_deploy:
     - "rm -f storage/cache/*"
     - "rm -f storage/views/*"
-  after_build:
-    - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi;"
-    - "php composer.phar --prefer-source install"
