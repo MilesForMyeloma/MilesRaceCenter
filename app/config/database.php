@@ -2,6 +2,8 @@
 
 return array(
 
+	'collation' => 'utf8_unicode_ci',
+	
 	/*
 	|--------------------------------------------------------------------------
 	| PDO Fetch Style

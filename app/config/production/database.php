@@ -2,8 +2,11 @@
 
 return array(
 
+
+    'collation' => 'utf8_unicode_ci',
+
     'profile' => false,
-    
+
     /*
     |--------------------------------------------------------------------------
     | PDO Fetch Style
