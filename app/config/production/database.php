@@ -2,7 +2,7 @@
 
 return array(
 
-
+    // Used for pagodabox
     'collation' => 'utf8_unicode_ci',
 
     'profile' => false,
