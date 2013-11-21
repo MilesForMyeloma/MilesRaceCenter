@@ -47,6 +47,17 @@ __Users__
 * user@user.com  *Password: sentryuser*
 * admin@admin.com *Password: sentryadmin*
 
+## Dependencies and Thank Yous
+- (jsTimezoneDetect)[http://pellepim.bitbucket.org/jstz/]
+- Twitter Bootstrap
+- jQuery
+- Restfulizer.js
+- BootstrapSwitch
+- Omnipay
+- Laravel
+- Jeffery Way
+- Sentry
+
 ### Notes
 
 * Please let me know if you have any problems. 
