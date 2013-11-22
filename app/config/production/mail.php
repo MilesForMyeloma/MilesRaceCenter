@@ -39,7 +39,7 @@ return array(
     | stay compatible with the Postmark e-mail application by default.
     |
     */
-
+ 
     'port' => 587,
 
     /*
