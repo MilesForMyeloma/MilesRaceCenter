@@ -1,6 +1,6 @@
 <?php
 
-class RacesController extends BaseController {
+class RaceController extends BaseController {
 
     protected $race;
     /**

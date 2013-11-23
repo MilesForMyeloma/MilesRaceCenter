@@ -23,4 +23,4 @@ Route::resource('donations', 'DonationController');
 
 Route::resource('groups', 'GroupController');
 
-Route::resource('races', 'RacesController');
+Route::resource('races', 'RaceController');

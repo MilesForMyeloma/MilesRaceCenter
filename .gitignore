@@ -8,5 +8,5 @@ composer.lock
 /app/config/local/*
 .DS_Store
 /report
-/build
+/build/logs/*
 milesracecenter.sublime-workspace

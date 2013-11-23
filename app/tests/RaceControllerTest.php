@@ -1,6 +1,6 @@
 <?php
 
-class RacesControllerTest extends TestCase {
+class RaceControllerTest extends TestCase {
 
     public function setUp() {
         parent::setUp();
@@ -86,8 +86,8 @@ class RacesControllerTest extends TestCase {
         $this->beUser();
 
         // Don't allow users to create races
-        $this->get(URL::action('RacesController@create'));
-        $this->assertRedirectedToAction('RacesController@index');
+        $this->get(URL::action('RaceController@create'));
+        $this->assertRedirectedToAction('RaceController@index');
         $this->assertSessionHas('error','Access denied.');
     }
 
@@ -97,7 +97,7 @@ class RacesControllerTest extends TestCase {
         $this->beAdmin();
 
         // Allow admins to create races
-        $this->get(URL::action('RacesController@create'));
+        $this->get(URL::action('RaceController@create'));
         $this->assertResponseOk();
     }
 
@@ -107,8 +107,8 @@ class RacesControllerTest extends TestCase {
         $this->beUser();
 
         // Don't allow users to store races
-        $this->post(URL::action('RacesController@store'));
-        $this->assertRedirectedToAction('RacesController@index');
+        $this->post(URL::action('RaceController@store'));
+        $this->assertRedirectedToAction('RaceController@index');
         $this->assertSessionHas('error','Access denied.');
 
     }
@@ -119,15 +119,15 @@ class RacesControllerTest extends TestCase {
         $this->beAdmin();
 
         // No input provided
-        $this->post(URL::action('RacesController@store'));
-        $this->assertRedirectedToAction('RacesController@create');
+        $this->post(URL::action('RaceController@store'));
+        $this->assertRedirectedToAction('RaceController@create');
         $this->assertSessionHasErrors();
 
         $now = date('Y-m-d H:i:s');
 
         // Store a race
         $this->app->instance('Race', $this->mock);
-        $this->call('post',URL::action('RacesController@store'),array(
+        $this->call('post',URL::action('RaceController@store'),array(
             'slug'=>'yard-for-mm',
             'name'=>'Yards for Myeloma',
             'timezone'=>'America/Chicago',
@@ -138,7 +138,7 @@ class RacesControllerTest extends TestCase {
             'created_at'=>$now,
             'updated_at'=>$now,
         ));
-        $this->assertRedirectedToAction('RacesController@index');
+        $this->assertRedirectedToAction('RaceController@index');
         $this->assertSessionHas('info','Race created.'); 
     }
 
@@ -148,8 +148,8 @@ class RacesControllerTest extends TestCase {
         $this->beUser();
 
         // Don't allow users to edit races
-        $this->get(URL::action('RacesController@edit','miles-for-mm'));
-        $this->assertRedirectedToAction('RacesController@index');
+        $this->get(URL::action('RaceController@edit','miles-for-mm'));
+        $this->assertRedirectedToAction('RaceController@index');
         $this->assertSessionHas('error','Access denied.');
 
     }
@@ -160,8 +160,8 @@ class RacesControllerTest extends TestCase {
         $this->beUser();
 
         // Don't allow users to edit races
-        $this->put(URL::action('RacesController@update','miles-for-mm'));
-        $this->assertRedirectedToAction('RacesController@index');
+        $this->put(URL::action('RaceController@update','miles-for-mm'));
+        $this->assertRedirectedToAction('RaceController@index');
         $this->assertSessionHas('error','Access denied.');
 
     }
@@ -173,8 +173,8 @@ class RacesControllerTest extends TestCase {
         $this->beUser();
 
         // Delete the race
-        $response = $this->delete(URL::action('RacesController@destroy', 'miles-for-mm'));
-        $this->assertRedirectedToAction('RacesController@index');
+        $response = $this->delete(URL::action('RaceController@destroy', 'miles-for-mm'));
+        $this->assertRedirectedToAction('RaceController@index');
         $this->assertSessionHas('error','Access denied.');
 
     }
@@ -185,9 +185,9 @@ class RacesControllerTest extends TestCase {
         $this->beAdmin();
 
         // Delete the race
-        $response = $this->delete(URL::action('RacesController@destroy', 'miles-for-mm'));
+        $response = $this->delete(URL::action('RaceController@destroy', 'miles-for-mm'));
         $this->assertSessionHas('info','Race deleted.');
-        $this->assertRedirectedToAction('RacesController@index');
+        $this->assertRedirectedToAction('RaceController@index');
     }
 
 }
