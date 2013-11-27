@@ -75,6 +75,12 @@ class RaceController extends BaseController {
     {
         $race = $this->race->where('slug',$slug)->first();
 
+        if($race === null) {
+            // @codeCoverageIgnoreStart
+            return \App::abort(404);
+            // @codeCoverageIgnoreEnd
+        }
+
         return View::make('races.show')->with('race',$race);
     }
 
@@ -90,6 +96,12 @@ class RaceController extends BaseController {
         {
             $input = Input::only('slug', 'name', 'description', 'startLocal', 'endLocal', 'timezone', 'website');
             $race = $this->race->where('slug',$slug)->first();
+
+            if($race === null) {
+                // @codeCoverageIgnoreStart
+                return \App::abort(404);
+                // @codeCoverageIgnoreEnd
+            }
 
             return View::make('races.edit')->with('race',$race);
         } else {
@@ -109,6 +121,13 @@ class RaceController extends BaseController {
         if(Sentry::check() && Sentry::getUser()->hasAccess('admin'))
         {
             $race = $this->race->where('slug',$slug)->first();
+            
+            if($race === null) {
+                // @codeCoverageIgnoreStart
+                return \App::abort(404);
+                // @codeCoverageIgnoreEnd
+            }
+            
             $input = Input::only('slug', 'name', 'description', 'startLocal', 'endLocal', 'timezone', 'website');
             $validator = Validator::make($input, Race::getValidationRules($race->id));
             
@@ -136,6 +155,13 @@ class RaceController extends BaseController {
         if(Sentry::check() && Sentry::getUser()->hasAccess('admin'))
         {
             $race = $this->race->where('slug',$slug)->first();
+
+            if($race === null) {
+                // @codeCoverageIgnoreStart
+                return \App::abort(404);
+                // @codeCoverageIgnoreEnd
+            }
+            
             $race->delete();
             Session::flash('info', 'Race deleted.');
             return Redirect::to(URL::action(get_class($this).'@index'));
