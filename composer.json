@@ -25,5 +25,12 @@
 	"scripts": {
 		"post-update-cmd": "php artisan optimize"
 	},
+	"extra": {
+		"heroku": {
+			"framework": "silex",
+			"document-root": "public",
+			"index-document": "index.php"
+		}
+	},
 	"minimum-stability": "dev"
 }
