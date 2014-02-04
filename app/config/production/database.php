@@ -49,10 +49,11 @@ return array(
     'connections' => array(
         'production' => array(
             'driver'   => 'mysql',
-            'host'     => $_SERVER['DB1_HOST'],
-            'database' => $_SERVER['DB1_NAME'],
-            'username' => $_SERVER['DB1_USER'],
-            'password' => $_SERVER['DB1_PASS'],
+            'host'     => parse_url($_ENV['DATABASE_URL'])['host'],
+            'database' => parse_url($_ENV['DATABASE_URL'])['path'],
+            'username' => parse_url($_ENV['DATABASE_URL'])['user'],
+            'password' => parse_url($_ENV['DATABASE_URL'])['pass'],
+            'port' => parse_url($_ENV['DATABASE_URL'])['port'],
             'charset'  => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'   => '',
