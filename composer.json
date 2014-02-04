@@ -28,7 +28,8 @@
             "chmod -R 777 app/storage",
             "chmod -R 777 public",
             "php artisan migrate --package=cartalyst/sentry",
-            "php artisan migrate"
+            "php artisan migrate",
+            "php artisan db:seed"
         ],
         "post-update-cmd": [
             "php artisan clear-compiled",
