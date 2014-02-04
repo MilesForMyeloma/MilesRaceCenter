@@ -27,6 +27,7 @@
             "php artisan optimize",
             "chmod -R 777 app/storage",
             "chmod -R 777 public",
+            "php artisan migrate --package=cartalyst/sentry",
             "php artisan migrate"
         ],
         "post-update-cmd": [
