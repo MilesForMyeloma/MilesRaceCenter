@@ -13,6 +13,7 @@ class SentryUserGroupSeeder extends Seeder {
 
 		$userUser = Sentry::getUserProvider()->findByLogin('user@user.com');
 		$adminUser = Sentry::getUserProvider()->findByLogin('admin@admin.com');
+		$jimUser = Sentry::getUserProvider()->findByLogin('admin@admin.com');
 
 		$userGroup = Sentry::getGroupProvider()->findByName('Users');
 		$adminGroup = Sentry::getGroupProvider()->findByName('Admins');
@@ -21,6 +22,9 @@ class SentryUserGroupSeeder extends Seeder {
 	    $userUser->addGroup($userGroup);
 	    $adminUser->addGroup($userGroup);
 	    $adminUser->addGroup($adminGroup);
+	    $jimUser->addGroup($userGroup);
+	    $jimUser->addGroup($adminGroup);
+
 	}
 
 }
