@@ -30,8 +30,8 @@
             "php artisan migrate"
         ],
         "post-update-cmd": [
-            "php artisan clear-compiled"
-            "php artisan optimize",
+            "php artisan clear-compiled",
+            "php artisan optimize"
         ],
         "post-create-project-cmd": [
             "php artisan key:generate"
