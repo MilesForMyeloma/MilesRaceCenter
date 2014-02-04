@@ -52,7 +52,7 @@ return array(
             'host'     => parse_url($_SERVER['DATABASE_URL'])['host'],
             'database' => parse_url($_SERVER['DATABASE_URL'])['path'],
             'username' => parse_url($_SERVER['DATABASE_URL'])['user'],
-            'password' => ltrim (parse_url($_SERVER['DATABASE_URL'])['pass'],'/'),
+            'password' => substr(parse_url($_SERVER['DATABASE_URL'])['pass'],1),
             'port' => parse_url($_SERVER['DATABASE_URL'])['port'],
             'charset'  => 'utf8',
             'collation' => 'utf8_unicode_ci',
