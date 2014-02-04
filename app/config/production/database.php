@@ -50,9 +50,9 @@ return array(
         'production' => array(
             'driver'   => 'mysql',
             'host'     => parse_url($_SERVER['DATABASE_URL'])['host'],
-            'database' => parse_url($_SERVER['DATABASE_URL'])['path'],
+            'database' => substr(parse_url($_SERVER['DATABASE_URL'])['path'],1),
             'username' => parse_url($_SERVER['DATABASE_URL'])['user'],
-            'password' => substr(parse_url($_SERVER['DATABASE_URL'])['pass'],1),
+            'password' => parse_url($_SERVER['DATABASE_URL'])['pass'],
             'port' => parse_url($_SERVER['DATABASE_URL'])['port'],
             'charset'  => 'utf8',
             'collation' => 'utf8_unicode_ci',
