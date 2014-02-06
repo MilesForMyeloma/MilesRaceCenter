@@ -107,7 +107,7 @@ return array(
         'Illuminate\View\ViewServiceProvider',
         'Illuminate\Workbench\WorkbenchServiceProvider',
 
-        'Cartalyst\Sentry\SentryServiceProvider',
+        'Sentinel\SentinelServiceProvider',
 
     ),
 

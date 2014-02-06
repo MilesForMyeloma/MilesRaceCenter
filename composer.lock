@@ -3,20 +3,20 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "3640b65300dcdbc112041bb61d1a02c9",
+    "hash": "f77225d6723d4ebc6c2cbad8012d54b3",
     "packages": [
         {
             "name": "cartalyst/sentry",
-            "version": "dev-master",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cartalyst/sentry.git",
-                "reference": "6f9a514f1231d5a056fe65bfba6898fcb09024eb"
+                "reference": "f17a7b868a9e5b81bee1b2ce483e90dbfa64c46d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cartalyst/sentry/zipball/6f9a514f1231d5a056fe65bfba6898fcb09024eb",
-                "reference": "6f9a514f1231d5a056fe65bfba6898fcb09024eb",
+                "url": "https://api.github.com/repos/cartalyst/sentry/zipball/f17a7b868a9e5b81bee1b2ce483e90dbfa64c46d",
+                "reference": "f17a7b868a9e5b81bee1b2ce483e90dbfa64c46d",
                 "shasum": ""
             },
             "require": {
@@ -103,7 +103,7 @@
                 "laravel",
                 "security"
             ],
-            "time": "2014-01-28 17:31:53"
+            "time": "2013-12-07 21:12:19"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -528,12 +528,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "c4250bf75d4613db8ecd022c22a80c6f721a6d9a"
+                "reference": "37f092595bcc8de1c94570b5dbf3b0718f0e569a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/c4250bf75d4613db8ecd022c22a80c6f721a6d9a",
-                "reference": "c4250bf75d4613db8ecd022c22a80c6f721a6d9a",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/37f092595bcc8de1c94570b5dbf3b0718f0e569a",
+                "reference": "37f092595bcc8de1c94570b5dbf3b0718f0e569a",
                 "shasum": ""
             },
             "require": {
@@ -637,7 +637,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2014-02-04 20:00:14"
+            "time": "2014-02-05 22:36:20"
         },
         {
             "name": "mockery/mockery",
@@ -645,12 +645,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "2a813f52fa77c4020259e5bb4d29c095fc0d3e17"
+                "reference": "0fd49fd3f6c984409802004b1dd7b55d0f35ce4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/2a813f52fa77c4020259e5bb4d29c095fc0d3e17",
-                "reference": "2a813f52fa77c4020259e5bb4d29c095fc0d3e17",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/0fd49fd3f6c984409802004b1dd7b55d0f35ce4a",
+                "reference": "0fd49fd3f6c984409802004b1dd7b55d0f35ce4a",
                 "shasum": ""
             },
             "require": {
@@ -702,7 +702,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2014-02-02 23:07:08"
+            "time": "2014-02-05 21:30:08"
         },
         {
             "name": "monolog/monolog",
@@ -1730,6 +1730,58 @@
             "time": "2014-01-18 15:33:09"
         },
         {
+            "name": "rydurham/sentinel",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rydurham/Sentinel.git",
+                "reference": "6302d62049b873a6922bb65a4754cb2705368a61"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rydurham/Sentinel/zipball/6302d62049b873a6922bb65a4754cb2705368a61",
+                "reference": "6302d62049b873a6922bb65a4754cb2705368a61",
+                "shasum": ""
+            },
+            "require": {
+                "cartalyst/sentry": "2.1.*",
+                "illuminate/support": "4.1.*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/migrations",
+                    "src/seeds",
+                    "src/controllers"
+                ],
+                "psr-0": {
+                    "Sentinel": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan Durham",
+                    "email": "rydurham@gmail.com"
+                },
+                {
+                    "name": "We Are Base",
+                    "email": "engineers@wearebase.com"
+                }
+            ],
+            "description": "An implementation of the Sentry User Manager for Laravel.",
+            "keywords": [
+                "auth",
+                "laravel",
+                "sentry"
+            ],
+            "time": "2014-02-05 02:04:00"
+        },
+        {
             "name": "stack/builder",
             "version": "dev-master",
             "source": {
@@ -2252,12 +2304,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/HttpFoundation.git",
-                "reference": "25b49c494ea6aed2cfd8448ae3f8437d01e731eb"
+                "reference": "4bd82e35304e4087706469525c5cb61d125f4c03"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/25b49c494ea6aed2cfd8448ae3f8437d01e731eb",
-                "reference": "25b49c494ea6aed2cfd8448ae3f8437d01e731eb",
+                "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/4bd82e35304e4087706469525c5cb61d125f4c03",
+                "reference": "4bd82e35304e4087706469525c5cb61d125f4c03",
                 "shasum": ""
             },
             "require": {
@@ -2293,7 +2345,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "http://symfony.com",
-            "time": "2014-01-07 13:28:54"
+            "time": "2014-02-03 17:15:33"
         },
         {
             "name": "symfony/http-kernel",
@@ -2646,7 +2698,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "way/generators": 20,
-        "mockery/mockery": 20
+        "mockery/mockery": 20,
+        "rydurham/sentinel": 20
     },
     "platform": [
 
