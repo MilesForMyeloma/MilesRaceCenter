@@ -1,12 +1,12 @@
 {
     "require": {
-        "laravel/framework": "4.0.*",
-        "cartalyst/sentry": "2.0.*",
+        "laravel/framework": "4.1.*",
         "way/generators": "dev-master",
         "mockery/mockery": "dev-master@dev",
         "omnipay/stripe": "~2.0",
         "omnipay/paypal": "~2.0",
-        "phpunit/phpunit": "3.7.*"
+        "phpunit/phpunit": "3.7.*",
+        "rydurham/sentinel": "dev-master"
     },
     "autoload": {
         "classmap": [ 
@@ -27,8 +27,9 @@
             "php artisan optimize",
             "chmod -R 777 app/storage",
             "chmod -R 777 public",
-            "php artisan migrate --package=cartalyst/sentry",
+            "php artisan migrate --package=rydurham/sentinel",
             "php artisan migrate",
+            "php artisan db:seed --class='SentinelDatabaseSeeder'",
             "php artisan db:seed"
         ],
         "post-update-cmd": [

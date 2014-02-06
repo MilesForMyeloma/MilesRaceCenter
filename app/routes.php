@@ -12,15 +12,21 @@
 */
 
 
-Route::get('/', function()
+/* Route::get('/', function()
 {
-	return View::make('hello');
-});
+	
+}); */
 
-Route::controller('users', 'UserController');
+// Route::controller('users', 'UserController');
 
 Route::resource('donations', 'DonationController');
 
-Route::resource('groups', 'GroupController');
+// Route::resource('groups', 'GroupController');
 
 Route::resource('races', 'RaceController');
+
+// Set Home Route
+ Route::get('/', array('as' => 'home', function()
+{
+    return View::make('hello');
+}));
