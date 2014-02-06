@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('Sentinel::layouts.default')
 
 {{-- Web site Title --}}
 @section('title')

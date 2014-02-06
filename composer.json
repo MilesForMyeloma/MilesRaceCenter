@@ -1,4 +1,19 @@
 {
+
+    "name": "jcummins/MilesRaceCenter",
+    "type": "website",
+    "description": "A Laravel based event management, registration, and donation system for non-profits written in PHP",
+    "keywords": ["race","registration","donation","non-profit","laravel","php"],
+    "homepage": "http://github.com/jcummins/MilesRaceCenter",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jim Cummins",
+            "email": "jim@jamespcummins.com",
+            "homepage": "http://jamespcummins.com",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "laravel/framework": "4.1.*",
         "way/generators": "dev-master",
