@@ -9,7 +9,7 @@ Hello World
 {{-- Content --}}
 @section('content')
 
-<h1>Miles for Myeloma</h1>
+<h2>Miles for Myeloma</h2>
 <div class="well">
 	<p>
 		Miles for Myeloma is an organization dedicated to raising funds for Myeloma research. To accomplish this goal, we organize an annual walk/run in Iowa City, Iowa.  All funds raised are donated to the Multiple Myeloma Research Foundation.
