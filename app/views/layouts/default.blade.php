@@ -2,9 +2,9 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title> 
-			@section('title') 
-			@show 
+		<title>
+			@section('title')
+			@show
 		</title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,11 +30,11 @@
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 
-	
+
 	</head>
 
 	<body>
-		
+
 
 		<!-- Navbar -->
 		<div class="navbar navbar-inverse navbar-fixed-top">
@@ -45,10 +45,12 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <a class="navbar-brand" href="{{ URL::route('home') }}">L4 with Sentry</a>
+	          <a class="navbar-brand" href="{{ URL::route('home') }}">Miles for Myeloma</a>
 	        </div>
 	        <div class="collapse navbar-collapse">
 	          <ul class="nav navbar-nav">
+	            <li {{ (Request::is('/') ? 'class="active"' : '') }}><a href="{{ URL::to('') }}">Home</a></li>
+				<li {{ (Request::is('races*') ? 'class="active"' : '') }}><a href="{{ URL::to('/races') }}">Races</a></li>
 				@if (Sentry::check() && Sentry::getUser()->hasAccess('admin'))
 					<li {{ (Request::is('users*') ? 'class="active"' : '') }}><a href="{{ URL::action('Sentinel\UserController@index') }}">Users</a></li>
 					<li {{ (Request::is('groups*') ? 'class="active"' : '') }}><a href="{{ URL::action('Sentinel\GroupController@index') }}">Groups</a></li>
@@ -71,7 +73,7 @@
 		<!-- Container -->
 		<div class="container">
 			<!-- Notifications -->
-			@include('Sentinel::layouts/notifications')
+			@include('layouts.notifications')
 			<!-- ./ notifications -->
 
 			<!-- Content -->
@@ -85,7 +87,7 @@
 		================================================== -->
 		<script src="{{ asset('packages/rydurham/sentinel/js/jquery-2.0.2.min.js') }}"></script>
 		<script src="{{ asset('packages/rydurham/sentinel/js/bootstrap.min.js') }}"></script>
-		<script src="{{ asset('packages/rydurham/sentinel/js/restfulizer.js') }}"></script> 
+		<script src="{{ asset('packages/rydurham/sentinel/js/restfulizer.js') }}"></script>
 		<!-- Thanks to Zizaco for the Restfulizer script.  http://zizaco.net  -->
 	</body>
 </html>
