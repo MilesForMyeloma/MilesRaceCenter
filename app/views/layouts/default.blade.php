@@ -21,7 +21,10 @@
 		@section('styles')
 			body {
 				padding-top: 60px;
-				font-size: 1em
+			}
+
+			input[type="text"], input[type="password"], input[type="phone"],  textarea {
+        		font-size:16px;
 			}
 		@show
 		</style>
