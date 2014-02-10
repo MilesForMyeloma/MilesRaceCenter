@@ -21,6 +21,7 @@
 		@section('styles')
 			body {
 				padding-top: 60px;
+				font-size: 1em
 			}
 		@show
 		</style>
@@ -57,6 +58,13 @@
 	          </ul>
 	          <ul class="nav navbar-nav navbar-right">
 	            @if (Sentry::check())
+	            <li>
+	            	<a href="javascript:void(0);" class="dropdown-toggle hidden-xs" data-toggle="dropdown"><span class="glyphicon glyphicon-plus"></span> <span class="caret"></span></a>
+	            	<a href="javascript:void(0);" class="dropdown-toggle visible-xs" data-toggle="dropdown">New</a>
+	            	<ul class="dropdown-menu">
+            			<li><a href="#">Race</a></li>
+          			</ul>
+	            </li>
 				<li {{ (Request::is('users/show/' . Session::get('userId')) ? 'class="active"' : '') }}><a href="/users/{{ Session::get('userId') }}">{{ Session::get('email') }}</a></li>
 				<li><a href="{{ URL::route('Sentinel\logout') }}">Logout</a></li>
 				@else
