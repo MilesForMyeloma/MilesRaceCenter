@@ -22,7 +22,7 @@
 			body {
 				padding-top: 60px;
 			}
-
+			/* Hack for iOS phone input focus glitch */
 			input[type="text"], input[type="password"], input[type="phone"],  textarea {
         		font-size:16px;
 			}
