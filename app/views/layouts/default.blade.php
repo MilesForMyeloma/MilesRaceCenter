@@ -4,7 +4,7 @@
 		<meta charset="utf-8" />
 		<title>
 			@section('title')
-			@show
+			@show - Miles for Myeloma
 		</title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +22,17 @@
 			body {
 				padding-top: 60px;
 			}
+
+			.nav .caret, .nav a:active .caret {
+				border-top-color: #999;
+				border-bottom-color: #999;
+			}
+
+			.nav a:hover .caret {
+				border-top-color: #fff;
+				border-bottom-col: #fff;
+			}
+
 			/* Hack for iOS phone input focus glitch */
 			input[type="text"], input[type="password"], input[type="phone"],  textarea {
         		font-size:16px;
@@ -52,24 +63,31 @@
 	          <a class="navbar-brand" href="{{ URL::route('home') }}">Miles for Myeloma</a>
 	        </div>
 	        <div class="collapse navbar-collapse">
-	          <ul class="nav navbar-nav">
-				<li {{ (Request::is('races*') ? 'class="active"' : '') }}><a href="{{ URL::to('/races') }}">Races</a></li>
-				@if (Sentry::check() && Sentry::getUser()->hasAccess('admin'))
-					<li {{ (Request::is('users*') ? 'class="active"' : '') }}><a href="{{ URL::action('Sentinel\UserController@index') }}">Users</a></li>
-					<li {{ (Request::is('groups*') ? 'class="active"' : '') }}><a href="{{ URL::action('Sentinel\GroupController@index') }}">Groups</a></li>
-				@endif
-	          </ul>
 	          <ul class="nav navbar-nav navbar-right">
-	            @if (Sentry::check())
+	            @if (Sentry::check() && Sentry::getUser()->hasAccess('admin'))
 	            <li>
-	            	<a href="javascript:void(0);" class="dropdown-toggle hidden-xs" data-toggle="dropdown"><span class="glyphicon glyphicon-plus"></span> <span class="caret"></span></a>
-	            	<a href="javascript:void(0);" class="dropdown-toggle visible-xs" data-toggle="dropdown">New</a>
+	            	<a href="javascript:void(0);" class="dropdown-toggle hidden-xs" data-toggle="dropdown"><span class="glyphicon glyphicon-lock"></span> <span class="caret"></span></a>
+	            	<a href="javascript:void(0);" class="dropdown-toggle visible-xs" data-toggle="dropdown">Admin Options</a>
 	            	<ul class="dropdown-menu">
-            			<li><a href="#">Race</a></li>
+	            		<li><a href="{{ URL::route('races.create') }}">Races</a></li>
+            			<li><a href="{{ URL::action('Sentinel\UserController@index') }}">Users</a></li>
+            			<li><a href="{{ URL::action('Sentinel\GroupController@index') }}">Groups</a></li>
           			</ul>
 	            </li>
-				<li {{ (Request::is('users/show/' . Session::get('userId')) ? 'class="active"' : '') }}><a href="/users/{{ Session::get('userId') }}">{{ Session::get('email') }}</a></li>
-				<li><a href="{{ URL::route('Sentinel\logout') }}">Logout</a></li>
+
+	            @endif
+				@if (Sentry::check())
+
+
+				<li>
+	            	<a href="javascript:void(0);" class="dropdown-toggle hidden-xs" data-toggle="dropdown">{{ Session::get('email') }} <span class="caret"></span></a>
+	            	<a href="javascript:void(0);" class="dropdown-toggle visible-xs" data-toggle="dropdown">Account Options</a>
+	            	<ul class="dropdown-menu">
+	            		<li><a href="{{ URL::route('races.create') }}"></a></li>
+            			<li {{ (Request::is('users/show/' . Session::get('userId')) ? 'class="active"' : '') }}><a href="{{ URL::action('Sentinel\UserController@show',Session::get('userId')) }}">My Account</a></li>
+            			<li><a href="{{ URL::route('Sentinel\logout') }}">Logout</a></li>
+          			</ul>
+	            </li>
 				@else
 				<li {{ (Request::is('login') ? 'class="active"' : '') }}><a href="{{ URL::route('Sentinel\login') }}">Login</a></li>
 				<li {{ (Request::is('users/create') ? 'class="active"' : '') }}><a href="{{ URL::route('Sentinel\register') }}">Register</a></li>
