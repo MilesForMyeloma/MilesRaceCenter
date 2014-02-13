@@ -39,7 +39,7 @@ return array(
     | stay compatible with the Postmark e-mail application by default.
     |
     */
- 
+
     'port' => 587,
 
     /*
@@ -53,7 +53,7 @@ return array(
     |
     */
 
-    'from' => array('address' => 'noreply@sandbox8801.mailgun.org', 'name' => 'MilesRaceCenter Demo'),
+    'from' => array('address' => 'noreply@accounts.milesformm.com', 'name' => 'Miles for Myeloma'),
 
     /*
     |--------------------------------------------------------------------------
