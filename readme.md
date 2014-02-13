@@ -5,7 +5,7 @@ It is currently under heavy development and much of the core functionality still
 
 Project is a fork of [L4withSentry](https://github.com/rydurham/L4withSentry).
 
-[![Build Status](https://travis-ci.org/MilesForMyeloma/MilesRaceCenter.png?branch=master)](https://travis-ci.org/MilesForMyeloma/MilesRaceCenter) [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/MilesForMyeloma/MilesRaceCenter/badges/quality-score.png?s=c4b7090ffa64dcc5a18c4f9abc1b1605761d159f)](https://scrutinizer-ci.com/g/MilesForMyeloma/MilesRaceCenter/) [![Dependencies Status](https://depending.in/MilesForMyeloma/MilesRaceCenter.png)](http://depending.in/MilesForMyeloma/MilesRaceCenter) [![Code Coverage](https://scrutinizer-ci.com/g/MilesForMyeloma/MilesRaceCenter/badges/coverage.png?s=2fca24d108e8d3d7fc7fc43864b7c8b0098e7d8f)](https://scrutinizer-ci.com/g/MilesForMyeloma/MilesRaceCenter/)
+[![Build Status](https://travis-ci.org/MilesForMyeloma/MilesRaceCenter.png?branch=master)](https://travis-ci.org/MilesForMyeloma/MilesRaceCenter) [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/MilesForMyeloma/MilesRaceCenter/badges/quality-score.png?s=861b5a46acee86f29f4c37625a80e132672f3c78)](https://scrutinizer-ci.com/g/MilesForMyeloma/MilesRaceCenter/) [![Dependencies Status](https://depending.in/MilesForMyeloma/MilesRaceCenter.png)](http://depending.in/MilesForMyeloma/MilesRaceCenter) [![Code Coverage](https://scrutinizer-ci.com/g/MilesForMyeloma/MilesRaceCenter/badges/coverage.png?s=173f200a782f2700da49b0e2726ab18fc88b75ff)](https://scrutinizer-ci.com/g/MilesForMyeloma/MilesRaceCenter/)
 
 ### Internals
 
