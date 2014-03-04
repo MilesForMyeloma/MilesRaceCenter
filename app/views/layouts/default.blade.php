@@ -69,7 +69,7 @@
 	            	<a href="javascript:void(0);" class="dropdown-toggle hidden-xs" data-toggle="dropdown"><span class="glyphicon glyphicon-lock"></span> <span class="caret"></span></a>
 	            	<a href="javascript:void(0);" class="dropdown-toggle visible-xs" data-toggle="dropdown">Admin Options</a>
 	            	<ul class="dropdown-menu">
-	            		<li><a href="{{ URL::route('races.create') }}">Races</a></li>
+	            		<li><a href="{{ URL::action('RaceController@index') }}">Races</a></li>
             			<li><a href="{{ URL::action('Sentinel\UserController@index') }}">Users</a></li>
             			<li><a href="{{ URL::action('Sentinel\GroupController@index') }}">Groups</a></li>
           			</ul>

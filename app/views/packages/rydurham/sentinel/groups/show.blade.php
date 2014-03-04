@@ -20,12 +20,7 @@ View Group
 	</div>
 	<div class="col-md-2">
 		<button class="btn btn-primary" onClick="location.href='{{ action('Sentinel\GroupController@edit', array($group->id)) }}'">Edit Group</button>
-	</div> 
-</div>
-<hr />
-<h4>Group Object</h4>
-<div>
-    {{ var_dump($group) }}
+	</div>
 </div>
 
 @stop

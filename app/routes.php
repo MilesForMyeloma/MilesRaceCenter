@@ -11,22 +11,14 @@
 |
 */
 
-
-/* Route::get('/', function()
-{
-	
-}); */
-
-// Route::controller('users', 'UserController');
-
-Route::resource('donations', 'DonationController');
-
-// Route::resource('groups', 'GroupController');
-
-Route::resource('races', 'RaceController');
-
 // Set Home Route
  Route::get('/', array('as' => 'home', function()
 {
     return View::make('hello');
 }));
+
+Route::resource('races', 'RaceController');
+Route::resource('races.registrations', 'RacesRegistrationsController');
+
+Route::resource('donations', 'DonationController');
+Route::resource('donationentries', 'DonationentriesController');

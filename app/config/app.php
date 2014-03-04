@@ -108,6 +108,7 @@ return array(
         'Illuminate\Workbench\WorkbenchServiceProvider',
 
         'Sentinel\SentinelServiceProvider',
+        'MilesForMyeloma\MilesRaceCenter\MilesRaceCenterServiceProvider'
 
     ),
 
@@ -174,7 +175,7 @@ return array(
         'URL'             => 'Illuminate\Support\Facades\URL',
         'Validator'       => 'Illuminate\Support\Facades\Validator',
         'View'            => 'Illuminate\Support\Facades\View',
-        
+
         'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry'
 
     ),
@@ -184,7 +185,7 @@ return array(
     | Payment API Details
     |--------------------------------------------------------------------------
     |
-    | This array holds the config / API information for payment options. 
+    | This array holds the config / API information for payment options.
     | We use Omnipay, but currently only support a few of the processors
     | that Omnipay supports.
     |
@@ -209,7 +210,7 @@ return array(
     | Timezone generation function
     |--------------------------------------------------------------------------
     |
-    | This contains the commands to generate a list of timezones. 
+    | This contains the commands to generate a list of timezones.
     | Feel free to alter this if you don't wish to support all timezones.
     |
     */

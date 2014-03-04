@@ -1,5 +1,7 @@
 <?php
 
+use MilesForMyeloma\MilesRaceCenter\Race\RaceInterface as Race;
+
 class RaceController extends BaseController {
 
     protected $race;
@@ -8,7 +10,7 @@ class RaceController extends BaseController {
     */
     public function __construct(Race $race)
     {
-        $this->race = $race;  
+        $this->race = $race;
     }
 
     /**
@@ -121,16 +123,16 @@ class RaceController extends BaseController {
         if(Sentry::check() && Sentry::getUser()->hasAccess('admin'))
         {
             $race = $this->race->where('slug',$slug)->first();
-            
+
             if($race === null) {
                 // @codeCoverageIgnoreStart
                 return \App::abort(404);
                 // @codeCoverageIgnoreEnd
             }
-            
+
             $input = Input::only('slug', 'name', 'description', 'startLocal', 'endLocal', 'timezone', 'website');
             $validator = Validator::make($input, Race::getValidationRules($race->id));
-            
+
             if($validator->passes()) {
                 $race->update($input);
                 Session::flash('info', 'Race updated.');
@@ -161,7 +163,7 @@ class RaceController extends BaseController {
                 return \App::abort(404);
                 // @codeCoverageIgnoreEnd
             }
-            
+
             $race->delete();
             Session::flash('info', 'Race deleted.');
             return Redirect::to(URL::action(get_class($this).'@index'));

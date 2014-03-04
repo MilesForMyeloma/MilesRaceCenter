@@ -1,6 +1,6 @@
 {
 
-    "name": "jcummins/MilesRaceCenter",
+    "name": "miles-for-myeloma/miles-race-center",
     "type": "website",
     "description": "A Laravel based event management, registration, and donation system for non-profits written in PHP",
     "keywords": ["race","registration","donation","non-profit","laravel","php"],
@@ -24,7 +24,8 @@
         "rydurham/sentinel": "dev-master"
     },
     "autoload": {
-        "classmap": [ 
+        "classmap": [
+
             "app/commands",
             "app/controllers",
             "app/models",
@@ -33,9 +34,12 @@
             "app/tests/TestCase.php",
             "app/validators"
         ],
-        "files": [ 
+        "files": [
             "app/support/helpers.php"
-        ]
+        ],
+        "psr-4": {
+            "MilesForMyeloma\\MilesRaceCenter\\": "app/src/MilesForMyeloma/MilesRaceCenter"
+        }
     },
     "scripts": {
         "post-install-cmd": [

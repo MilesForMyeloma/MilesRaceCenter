@@ -24,7 +24,7 @@ Races
 						<tr>
 							<td><a href="{{ URL::to('races/'.$race->slug) }}">{{{ $race->name }}}</a></td>
 							@if(Sentry::getUser() && Sentry::getUser()->hasAccess('admin'))
-							<td><button class="btn btn-default" onClick="location.href='{{ URL::to('races/'.$race->slug.'/edit') }}'">Edit</button> <button class="btn btn-default action_confirm" href="{{ URL::to('races/'.$race->slug) }}" data-token="{{ Session::getToken() }}" data-method="delete">Delete</button></td>
+							<td><button class="btn btn-default" onClick="location.href='{{ URL::to('races/'.$race->slug.'/registrations') }}'">Registrations</button> <button class="btn btn-default" onClick="location.href='{{ URL::to('races/'.$race->slug.'/edit') }}'">Edit</button> <button class="btn btn-default action_confirm" href="{{ URL::to('races/'.$race->slug) }}" data-token="{{ Session::getToken() }}" data-method="delete">Delete</button></td>
 							@endif
 						</tr>
 					@endforeach
